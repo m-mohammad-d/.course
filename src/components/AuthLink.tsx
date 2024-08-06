@@ -14,7 +14,7 @@ function AuthLink({ text, href, type }: AuthLinkProps) {
     <div>
       <Link
         to={href}
-        className={`${backgroundColor} ${textColor} px-6 py-3 border border-gray-300 transition duration-300 ease-in-out`}
+        className={`${backgroundColor} ${textColor} px-4 py-3 border border-gray-300 transition duration-300 ease-in-out`}
       >
         <span>{text}</span>
       </Link>
