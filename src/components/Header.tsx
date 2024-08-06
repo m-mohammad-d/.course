@@ -11,18 +11,18 @@ function Header() {
       </Link>
       <SearchBar />
       <ul className="flex justify-between items-center">
-        <li className="p-4 hover:text-primary  text-gray-600 transition-all delay-300 ease-in">
+        <li className="p-4 hover:text-primary hover:text-orange  text-gray-600 transition-all delay-300 ease-in">
           plans pricing{" "}
         </li>
-        <li className="p-4 hover:text-primary  text-gray-600 transition-all delay-300 ease-in">
+        <li className="p-4 hover:text-primary hover:text-orange text-gray-600 transition-all delay-300 ease-in">
           Udemy Business
         </li>
-        <li className="p-4 hover:text-primary  text-gray-600 transition-all delay-300 ease-in">
+        <li className="p-4 hover:text-primary hover:text-orange  text-gray-600 transition-all delay-300 ease-in">
           Teach on Udemy
         </li>
       </ul>
-        <AuthLink text="login" type="login" href="/login" />
-        <AuthLink text="sign up" type="signup" href="signup" />
+      <AuthLink text="login" type="login" href="/login" />
+      <AuthLink text="sign up" type="signup" href="signup" />
     </header>
   );
 }
