@@ -58,7 +58,7 @@ function Plans() {
         <h2 className="text-2xl text-gray2">
           Accelerate growth — for you or your organization
         </h2>
-        <div className="flex justify-between">
+        <div className="flex justify-between gap-8">
           {plans.map((plan) => (
             <PlanCard
               key={crypto.randomUUID()}
