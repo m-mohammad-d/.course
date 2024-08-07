@@ -22,7 +22,7 @@ function Header() {
           Teach on Udemy
         </li>
       </ul>
-      <RiShoppingCart2Line className="mx-3 w-4"  />
+      <RiShoppingCart2Line className="mx-3 w-4" size={30} />
       <AuthLink text="login" type="login" href="/login" />
       <AuthLink text="sign up" type="signup" href="signup" />
     </header>

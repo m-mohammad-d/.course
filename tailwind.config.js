@@ -5,6 +5,7 @@ export default {
     extend: {
       colors: {
         orange: "#FF9800",
+        hoverOrange: "#FB8C00",
         orangePeel: "#ffa202",
         gray1: "#2D2F31",
         gray2: "#2E3235",
