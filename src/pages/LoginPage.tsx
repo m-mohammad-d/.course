@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function LoginPage() {
   return (
     <div className="min-h-screen flex items-center justify-center">
@@ -36,7 +38,7 @@ function LoginPage() {
           </div>
           <div className="flex items-center justify-between">
             <button
-              className="bg-orange hover:bg-hoverOrange text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              className="bg-orange hover:bg-hoverOrange text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline"
               type="button"
             >
               Log in
@@ -49,7 +51,7 @@ function LoginPage() {
             </a>
           </div>
         </form>
-        <div className="mt-4">
+        <div className="mt-6">
           <p className="text-center text-gray-600">Other log in options</p>
           <div className="flex justify-center space-x-4 mt-2">
             <button className="bg-gray-100 p-2 rounded-full">
@@ -78,9 +80,9 @@ function LoginPage() {
         <div className="mt-6 text-center">
           <p className="text-gray-600">
             Don't have an account?{" "}
-            <a href="#" className="text-orange hover:text-hoverOrange">
+            <Link to="/signup" className="text-orange hover:text-hoverOrange">
               Sign up
-            </a>
+            </Link>
           </p>
           <p className="text-gray-600">
             <a href="#" className="text-orange hover:text-hoverOrange">
