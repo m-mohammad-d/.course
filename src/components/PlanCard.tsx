@@ -27,7 +27,7 @@ function PlanCard({ planname, price, property }: PlanCardType) {
       </div>
       <ul className="mt-6 ml-4 space-y-2 h-96">
         {property.map((item) => (
-          <li className="flex items-center text-gray-700 mx-3">
+          <li className="flex items-center text-gray-700 mx-3 text-sm">
             <FaRegCheckCircle className="text-green-500 mr-1" />
             {item}
           </li>
