@@ -33,7 +33,7 @@ const TestimonialsData = [
 
 function Testimonials() {
   return (
-    <div className="bg-gray-50 py-10 mx-auto">
+    <div className="bg-white py-10 mx-auto">
       <div className="mx-16">
         <h2 className="text-2xl  text-gray1 mb-8">
           See what others are achieving through learning
