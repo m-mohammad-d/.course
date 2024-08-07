@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "roboto";
+  src: url("./assets/font/Roboto-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 * {
   box-sizing: border-box;
   margin: 0;
@@ -9,4 +15,5 @@
 }
 body {
   background-color: #f5f5f5;
+  font-family: "roboto", sans-serif;
 }
