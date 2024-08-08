@@ -1,20 +1,22 @@
 import { useMutation } from "@tanstack/react-query";
-import { login as userLogin } from "../services/apiAuth"; // مسیر درست به فایل apiAuth.ts خود را تنظیم کنید
+import { signup as userSignup } from "../services/apiAuth"; 
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
-function useLogin() {
+function useSignup() {
   const navigate = useNavigate();
 
-  const { mutate: login, isPending } = useMutation({
+  const { mutate: signup, isPending } = useMutation({
     mutationFn: async ({
       email,
       password,
+      full_name,
     }: {
       email: string;
       password: string;
+      full_name: string;
     }) => {
-      if (!email || !password) {
+      if (!email || !password || !full_name) {
         throw new Error("Please fill out all fields.");
       }
 
@@ -23,11 +25,19 @@ function useLogin() {
         throw new Error("Please enter a valid email address.");
       }
 
-      return userLogin({ email, password });
+      if (password.length < 8) {
+        throw new Error("Password must be at least 8 characters long.");
+      }
+
+      if (full_name.length < 3) {
+        throw new Error("Full name must be at least 3 characters long.");
+      }
+
+      return userSignup({ email, password, full_name });
     },
     onSuccess: () => {
       navigate("/user");
-      toast.success("Login successful!");
+      toast.success("Signup successful!");
     },
     onError: (err: Error) => {
       console.error(err);
@@ -35,7 +45,7 @@ function useLogin() {
     },
   });
 
-  return { login, isPending };
+  return { signup, isPending };
 }
 
-export default useLogin;
+export default useSignup;

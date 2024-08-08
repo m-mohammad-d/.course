@@ -1,25 +1,41 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import useSignup from "../hooks/useSignup";
 
 function SignupPage() {
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const { signup, isPending } = useSignup();
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    signup({ email, password, full_name: fullName });
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="bg-white p-8 rounded-xl shadow-xl w-96">
         <h2 className="text-2xl font-bold mb-6 text-center text-gray1">
           Sign up and start learning
         </h2>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="email"
+              htmlFor="fullname"
             >
-              full name
+              Full Name
             </label>
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="fullname"
               type="text"
-              placeholder="full name"
+              placeholder="Full Name"
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
             />
           </div>
           <div className="mb-4">
@@ -34,6 +50,8 @@ function SignupPage() {
               id="email"
               type="email"
               placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="mb-6">
@@ -48,14 +66,17 @@ function SignupPage() {
               id="password"
               type="password"
               placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <div className="flex items-center justify-between">
             <button
               className="bg-orange hover:bg-hoverOrange text-white font-bold w-full py-3 rounded-lg shadow-lg focus:outline-none focus:shadow-outline"
-              type="button"
+              type="submit"
+              disabled={isPending}
             >
-              sign up
+              {isPending ? "Signing up..." : "Sign up"}
             </button>
           </div>
         </form>
@@ -79,7 +100,7 @@ function SignupPage() {
             <button className="bg-gray-100 p-2 rounded-full">
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/GitHub_Invertocat_Logo.svg/180px-GitHub_Invertocat_Logo.svg.png"
-                alt="Apple"
+                alt="GitHub"
                 className="h-6 w-6"
               />
             </button>
@@ -87,9 +108,9 @@ function SignupPage() {
         </div>
         <div className="mt-6 text-center">
           <p className="text-gray-600">
-            have an account?{" "}
+            Have an account?{" "}
             <Link to="/login" className="text-orange hover:text-hoverOrange">
-              login
+              Login
             </Link>
           </p>
         </div>
