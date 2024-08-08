@@ -26,7 +26,7 @@ function useLogin() {
       return userLogin({ email, password });
     },
     onSuccess: () => {
-      navigate("/user");
+      navigate("/user/myCourse");
       toast.success("Login successful!");
     },
     onError: (err: Error) => {

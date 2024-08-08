@@ -41,7 +41,7 @@ function useSignup() {
       return userSignup({ email, password, full_name });
     },
     onSuccess: () => {
-      navigate("/user");
+      navigate("/user/myCourse");
       toast.success("Signup successful!");
     },
     onError: (err: Error) => {
