@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useUpdateProfile } from "../hooks/useUpdateProfile";
 
 interface FormState {
-  fullName: string;
+  full_name: string;
   headline: string;
   description: string;
   website: string;
@@ -11,17 +12,17 @@ interface FormState {
   youtube: string;
 }
 
-function ProfileForm() {
-  const [formState, setFormState] = useState<FormState>({
-    fullName: "",
-    headline: "",
-    description: "",
-    website: "",
-    twitter: "",
-    facebook: "",
-    linkedin: "",
-    youtube: "",
-  });
+interface ProfileFormProps {
+  initialData: FormState;
+}
+
+const ProfileForm: React.FC<ProfileFormProps> = ({ initialData }) => {
+  const { handleUpdateProfile, isLoading, error } = useUpdateProfile();
+  const [formState, setFormState] = useState<FormState>(initialData);
+
+  useEffect(() => {
+    setFormState(initialData);
+  }, [initialData]);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -29,12 +30,19 @@ function ProfileForm() {
     >
   ) => {
     const { name, value } = e.target;
-    setFormState({ ...formState, [name]: value });
+    setFormState((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(formState);
+    try {
+      await handleUpdateProfile(formState);
+    } catch (err) {
+      console.error("Profile update failed", err);
+    }
   };
 
   return (
@@ -45,16 +53,16 @@ function ProfileForm() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         <div>
           <label
-            htmlFor="firstName"
+            htmlFor="full_name"
             className="block text-sm font-medium text-gray-700"
           >
-            First Name
+            Full Name
           </label>
           <input
             type="text"
-            name="firstName"
-            id="firstName"
-            value={formState.fullName}
+            name="full_name"
+            id="full_name"
+            value={formState.full_name}
             onChange={handleChange}
             className="mt-1 py-2 px-4 block w-full border border-gray-300 rounded-md"
           />
@@ -179,11 +187,14 @@ function ProfileForm() {
       <button
         type="submit"
         className="w-full py-2 px-4 bg-blue-600 text-white rounded-md"
+        disabled={isLoading}
       >
-        Save
+        {isLoading ? "Saving..." : "Save"}
       </button>
+
+      {error && <p className="text-red-500 mt-2">{error}</p>}
     </form>
   );
-}
+};
 
 export default ProfileForm;

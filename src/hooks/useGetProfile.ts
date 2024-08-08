@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { getUserProfile } from "../services/apiAuth";
 
 export interface UserProfile {
@@ -8,25 +8,19 @@ export interface UserProfile {
   purchased_courses: string[];
 }
 
-export function useUserProfile() {
-  const [profile, setProfile] = useState<UserProfile | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+export function useGetProfile() {
+  const {
+    data: profile,
+    error,
+    isLoading,
+  } = useQuery<UserProfile, Error>({
+    queryKey: ["getProfile"],
+    queryFn: getUserProfile,
+  });
 
-  useEffect(() => {
-    async function fetchProfile() {
-      try {
-        const data = await getUserProfile();
-        setProfile(data);
-      } catch (err) {
-        if (err instanceof Error) setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchProfile();
-  }, []);
-
-  return { profile, loading, error };
+  return {
+    profile,
+    loading: isLoading,
+    error: error?.message || null,
+  };
 }

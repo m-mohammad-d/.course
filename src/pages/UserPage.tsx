@@ -1,8 +1,8 @@
 
-import { useUserProfile } from '../hooks/useGetProfile';
+import { useGetProfile } from '../hooks/useGetProfile';
 
 function UserProfile() {
-  const { profile, loading, error } = useUserProfile();
+  const { profile, loading, error } = useGetProfile();
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;

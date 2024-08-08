@@ -7,6 +7,16 @@ interface loginType {
 interface signUpType extends loginType {
   full_name: string;
 }
+export interface UpdateProfileType {
+  full_name: string;
+  headline: string;
+  description: string;
+  website: string;
+  twitter: string;
+  facebook: string;
+  linkedin: string;
+  youtube: string;
+}
 
 export async function login({ email, password }: loginType) {
   const { data, error } = await supabase.auth.signInWithPassword({
@@ -35,7 +45,6 @@ export async function signup({ email, password, full_name }: signUpType) {
     const { error: insertError } = await supabase.from("profiles").insert({
       id: signUpData.user.id,
       full_name,
-      purchased_courses: [],
     });
 
     if (insertError) {
@@ -75,4 +84,39 @@ export async function getUserProfile() {
   }
 
   return profile;
+}
+
+export async function updateProfile(profileData: UpdateProfileType) {
+  const {
+    data: { user },
+    error: authError,
+  } = await supabase.auth.getUser();
+
+  if (authError) {
+    throw new Error(authError.message);
+  }
+
+  if (!user) {
+    throw new Error("No active user session");
+  }
+
+  const { error: updateError } = await supabase
+    .from("profiles")
+    .update({
+      full_name: profileData.full_name,
+      headline: profileData.headline,
+      description: profileData.description,
+      website: profileData.website,
+      TwitterProfile: profileData.twitter,
+      FacebookProfile: profileData.facebook,
+      LinkedInProfile: profileData.linkedin,
+      YouTubeProfile: profileData.youtube,
+    })
+    .eq("id", user.id);
+
+  if (updateError) {
+    throw new Error(updateError.message);
+  }
+
+  return true;
 }
