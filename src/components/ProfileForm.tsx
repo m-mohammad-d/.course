@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import { useUpdateProfile } from "../hooks/useUpdateProfile";
 
 interface FormState {
@@ -16,13 +16,10 @@ interface ProfileFormProps {
   initialData: FormState;
 }
 
-const ProfileForm: React.FC<ProfileFormProps> = ({ initialData }) => {
-  const { handleUpdateProfile, isLoading, error } = useUpdateProfile();
-  const [formState, setFormState] = useState<FormState>(initialData);
 
-  useEffect(() => {
-    setFormState(initialData);
-  }, [initialData]);
+function ProfileForm({ initialData }: ProfileFormProps) {
+  const { handleUpdateProfile, error, isLoading } = useUpdateProfile();
+  const [formState, setFormState] = useState<FormState>(initialData);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -186,7 +183,7 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ initialData }) => {
 
       <button
         type="submit"
-        className="w-full py-2 px-4 bg-blue-600 text-white rounded-md"
+        className="w-full py-2 px-4 bg-orange text-white rounded-md"
         disabled={isLoading}
       >
         {isLoading ? "Saving..." : "Save"}
@@ -195,6 +192,6 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ initialData }) => {
       {error && <p className="text-red-500 mt-2">{error}</p>}
     </form>
   );
-};
+}
 
 export default ProfileForm;

@@ -1,11 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 import { getUserProfile } from "../services/apiAuth";
 
-export interface UserProfile {
-  id: string;
+interface UserProfile {
   full_name: string;
-  email: string;
-  purchased_courses: string[];
+  headline: string;
+  description: string;
+  website: string;
+  twitter: string;
+  facebook: string;
+  linkedin: string;
+  youtube: string;
 }
 
 export function useGetProfile() {
@@ -20,7 +24,7 @@ export function useGetProfile() {
 
   return {
     profile,
-    loading: isLoading,
-    error: error?.message || null,
+    isLoading,
+    error,
   };
 }

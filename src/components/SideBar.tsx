@@ -7,7 +7,7 @@ interface SidebarItem {
 }
 
 const items: SidebarItem[] = [
-  { name: "edit profile", path: "/user/editprofile" },
+  { name: "edit profile", path: "/user/edit-profile" },
   { name: "Password", path: "/user/edit-password" },
   { name: "Photo", path: "/user/photo" },
   { name: "Subscriptions", path: "/user/subscriptions" },
@@ -17,7 +17,7 @@ const items: SidebarItem[] = [
   { name: "API clients", path: "/user/api-clients" },
 ];
 function Sidebar() {
-  const { logout, isPending } = useLogout();
+  const { logout } = useLogout();
   function handlerLogout() {
     logout();
   }

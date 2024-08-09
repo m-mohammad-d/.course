@@ -1,18 +1,13 @@
-import { useQuery } from "@tanstack/react-query";
-import { getUserProfile } from "../services/apiAuth";
 import ProfileForm from "../components/ProfileForm";
 import Spinner from "../components/Spinner";
+import { useGetProfile } from "../hooks/useGetProfile";
 
-function ProfilePage() {
-  const { data: profileData, error, isLoading } = useQuery({
-    queryKey: ["userProfile"],
-    queryFn: getUserProfile,
-  });
+function EditProfilePage() {
+  const { profile, isLoading, error } = useGetProfile();
 
   if (isLoading) return <Spinner />;
-  if (error instanceof Error) return <p>{error.message}</p>;
-
-  return profileData ? <ProfileForm initialData={profileData} /> : null;
+  if (error) return <p>{error?.message}</p>;
+  return profile ? <ProfileForm initialData={profile} /> : null;
 }
 
-export default ProfilePage;
+export default EditProfilePage;

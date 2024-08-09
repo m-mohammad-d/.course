@@ -10,6 +10,7 @@ import MyCourse from "./pages/MyCourse";
 import PrivateRoute from "./components/PrivateRoute";
 import UserLayout from "./layout/userLayout";
 import EditProfilePage from "./pages/EditProfilePage";
+import EditPasswordPage from "./pages/EditPasswordPage";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
               {
                 path: "/user/edit-profile",
                 element: <EditProfilePage />,
+              },
+              {
+                path: "/user/edit-password",
+                element: <EditPasswordPage />,
               },
             ],
           },

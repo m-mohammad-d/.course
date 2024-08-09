@@ -57,6 +57,20 @@ export async function signup({ email, password, full_name }: signUpType) {
   throw new Error("User registration failed.");
 }
 
+export async function getUserEmail() {
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser();
+  console.log(user?.email);
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return user?.email;
+}
+
 export async function getUserProfile() {
   const {
     data: { user },
@@ -127,4 +141,16 @@ export async function userLogOut() {
   if (error) {
     throw new Error(error.message);
   }
+}
+
+export async function updatePassword(password: string) {
+  const { data, error } = await supabase.auth.updateUser({
+    password,
+  });
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return data;
 }
