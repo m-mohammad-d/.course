@@ -1,15 +1,15 @@
-import { useMutation } from '@tanstack/react-query';
-import { updateProfile, UpdateProfileType } from '../services/apiAuth';
-import toast from 'react-hot-toast';
+import { useMutation } from "@tanstack/react-query";
+import { updateProfile, UpdateProfileType } from "../services/apiAuth";
+import toast from "react-hot-toast";
 
 export function useUpdateProfile() {
   const mutation = useMutation({
     mutationFn: (profileData: UpdateProfileType) => updateProfile(profileData),
-    onError: (error: unknown) => {
-      console.error("Profile update failed:", error);
+    onError: () => {
+      toast.error("Profile update failed:");
     },
     onSuccess: () => {
-        toast.success("Profile updated successfully");
+      toast.success("Profile updated successfully");
     },
   });
 

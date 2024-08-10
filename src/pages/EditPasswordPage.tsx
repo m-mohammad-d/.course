@@ -1,11 +1,11 @@
 import EditPasswordForm from "../components/EditPasswordForm";
-import useGetEmailPassword from "../hooks/useGetEmaiPassword";
+import useGetUserProfile from "../hooks/useGetUserProfile";
 
 function EditPasswordPage() {
-    const {data} = useGetEmailPassword()
+  const { data } = useGetUserProfile();
   return (
     <div>
-      <EditPasswordForm email={data} />
+      <EditPasswordForm email={data?.email} />
     </div>
   );
 }

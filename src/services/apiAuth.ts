@@ -35,40 +35,25 @@ export async function signup({ email, password, full_name }: signUpType) {
   const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
     email,
     password,
+    options: {
+      data: {
+        full_name,
+        headline: "",
+        description: "",
+        website: "",
+        twitter: "",
+        facebook: "",
+        linkedin: "",
+        youtube: "",
+      },
+    },
   });
 
   if (signUpError) {
     throw new Error(signUpError.message);
   }
 
-  if (signUpData?.user) {
-    const { error: insertError } = await supabase.from("profiles").insert({
-      id: signUpData.user.id,
-      full_name,
-    });
-
-    if (insertError) {
-      throw new Error(insertError.message);
-    }
-
-    return signUpData;
-  }
-
-  throw new Error("User registration failed.");
-}
-
-export async function getUserEmail() {
-  const {
-    data: { user },
-    error,
-  } = await supabase.auth.getUser();
-  console.log(user?.email);
-
-  if (error) {
-    throw new Error(error.message);
-  }
-
-  return user?.email;
+  return signUpData;
 }
 
 export async function getUserProfile() {
@@ -85,20 +70,22 @@ export async function getUserProfile() {
     throw new Error("No active user session");
   }
 
-  const userId = user.id;
+  const userProfile = {
+    email: user.email,
+    full_name: user.user_metadata.full_name,
+    headline: user.user_metadata.headline,
+    description: user.user_metadata.description,
+    website: user.user_metadata.website,
+    twitter: user.user_metadata.twitter,
+    facebook: user.user_metadata.facebook,
+    linkedin: user.user_metadata.linkedin,
+    youtube: user.user_metadata.youtube,
+  };
 
-  const { data: profile, error: profileError } = await supabase
-    .from("profiles")
-    .select("*")
-    .eq("id", userId)
-    .single();
 
-  if (profileError) {
-    throw new Error(profileError.message);
-  }
-
-  return profile;
+  return userProfile;
 }
+
 
 export async function updateProfile(profileData: UpdateProfileType) {
   const {
@@ -114,19 +101,18 @@ export async function updateProfile(profileData: UpdateProfileType) {
     throw new Error("No active user session");
   }
 
-  const { error: updateError } = await supabase
-    .from("profiles")
-    .update({
+  const { error: updateError } = await supabase.auth.updateUser({
+    data: {
       full_name: profileData.full_name,
       headline: profileData.headline,
       description: profileData.description,
       website: profileData.website,
-      TwitterProfile: profileData.twitter,
-      FacebookProfile: profileData.facebook,
-      LinkedInProfile: profileData.linkedin,
-      YouTubeProfile: profileData.youtube,
-    })
-    .eq("id", user.id);
+      twitter: profileData.twitter,
+      facebook: profileData.facebook,
+      linkedin: profileData.linkedin,
+      youtube: profileData.youtube,
+    },
+  });
 
   if (updateError) {
     throw new Error(updateError.message);
