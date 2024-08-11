@@ -11,6 +11,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import UserLayout from "./layout/userLayout";
 import EditProfilePage from "./pages/EditProfilePage";
 import EditPasswordPage from "./pages/EditPasswordPage";
+import CourseListPage from "./pages/CourseListPage";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/course/:id",
         element: <CoursePage />,
+      },
+      {
+        path: "/courses",
+        element: <CourseListPage />,
       },
       {
         element: <PrivateRoute />,

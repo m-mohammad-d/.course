@@ -1,4 +1,7 @@
-import CourseCard from "./CourseCards";
+
+import CourseCards from "./CourseCards";
+import { FaArrowRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const recommendedCourses = [
   {
@@ -54,12 +57,18 @@ const CourseRecommendations = () => {
       <h2 className="text-2xl font-bold mb-6 text-gray2">What to learn next</h2>
 
       <div>
-        <h3 className="text-lg font-semibold mb-8 text-gray3">
-          Recommended for you
-        </h3>
+        <div className="flex justify-between">
+          <h3 className="text-lg font-semibold mb-8 text-gray3">
+            Recommended for you
+          </h3>
+          <Link to="/courses" className="flex items-center gap-4">
+            <p>see all course</p>
+            <FaArrowRight />
+          </Link>
+        </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
           {recommendedCourses.map((course, index) => (
-            <CourseCard key={index} course={course} />
+            <CourseCards key={index} course={course} />
           ))}
         </div>
       </div>

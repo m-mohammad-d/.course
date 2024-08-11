@@ -1,4 +1,4 @@
-import React from "react";
+
 
 interface CourseCardType {
   title: string;
@@ -8,7 +8,7 @@ interface CourseCardType {
   price: string;
   oldPrice: string;
   image: string;
-  bestseller?: boolean; // اضافه کردن خاصیت bestseller به عنوان اختیاری
+  bestseller?: boolean;  
 }
 
 interface CourseCardProps {
