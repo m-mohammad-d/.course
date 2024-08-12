@@ -3,7 +3,7 @@ import logo from "../asset/image/udemyLogo.png";
 
 function Footer() {
   return (
-    <footer className="bg-[#2D2F31] text-white py-8">
+    <footer className="bg-[#2D2F31] text-white py-8 mt-auto ">
       <div className="container mx-auto px-4">
         <div className="flex justify-between">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-16 text-[12px] mb-8">
@@ -66,7 +66,7 @@ function Footer() {
             </div>
           </div>
           <div className="text-center md:text-left">
-            <button className=" border border-white text-white py-2 px-4 rounded mb-4 md:mb-0 flex items-center justify-center">
+            <button className="border border-white text-white py-2 px-4 rounded mb-4 md:mb-0 flex items-center justify-center">
               <IoEarthOutline />
               English
             </button>

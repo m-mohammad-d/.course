@@ -4,14 +4,14 @@ import Header from "../components/Header";
 
 function AppLayout() {
   return (
-    <div>
+    <div className="flex flex-col  min-h-screen">
       <Header />
 
-      <main>
+      <main className="flex-1">
         <Outlet />
       </main>
 
-      <Footer/>
+      <Footer />
     </div>
   );
 }
