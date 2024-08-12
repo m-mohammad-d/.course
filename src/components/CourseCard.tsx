@@ -1,6 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 interface CourseCardProps {
+  id: number;
   name: string;
   image: string;
   title: string;
@@ -13,6 +15,7 @@ interface CourseCardProps {
 }
 
 function CourseCard({
+  id,
   name,
   image,
   title,
@@ -35,7 +38,9 @@ function CourseCard({
 
       <div className="flex flex-col justify-between flex-grow ml-4">
         <div>
-          <h2 className="text-2xl font-bold">{name}</h2>
+          <Link to={`/course/${id}`}>
+            <h2 className="text-2xl font-bold">{name}</h2>
+          </Link>
           <p className="text-gray-700 mt-2">{title}</p>
           <p className="text-sm text-gray-500 mt-7">By {instructor}</p>
         </div>
