@@ -1,6 +1,7 @@
 import CourseFeatures from "../components/CourseFeatures";
 import CourseHeader from "../components/CourseHeader";
 import Spinner from "../components/Spinner";
+import TopCompaniesNotice from "../components/TopCompaniesNotice";
 import useGetCourse from "../hooks/useGetCourse";
 
 function CoursePage() {
@@ -23,6 +24,7 @@ function CoursePage() {
       />
       <div className="container mx-auto px-4">
         <CourseFeatures courseTime={data?.course.coursetime} />
+        <TopCompaniesNotice />
       </div>
     </div>
   );
