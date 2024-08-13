@@ -29,7 +29,7 @@ function CourseHeader({
           <h2 className="text-4xl font-bold mb-4">{courseName}</h2>
           <p className="text-lg mb-4">{coursetitle}</p>
           <div className="flex flex-wrap gap-4 items-center mb-6">
-            <div className="px-4 py-2 bg-orange  rounded-sm text-sm font-semibold">
+            <div className="px-4 py-2 bg-orange rounded-sm text-sm font-semibold">
               Best Seller
             </div>
             <div className="flex items-center space-x-4">
@@ -37,9 +37,9 @@ function CourseHeader({
                 <IoStarSharp color="yellow" />
                 <p className=" font-semibold">{courseRating}</p>
               </div>
-              <p className="text-sm text-gray-300">({ratingCount} ratings)</p>
+              <p className="text-sm">({ratingCount} ratings)</p>
             </div>
-            <div className="flex items-center text-sm text-gray-300 gap-2">
+            <div className="flex items-center text-sm gap-2">
               <PiStudentFill size={17} />
               <p>{countstudent} students</p>
             </div>
@@ -49,7 +49,7 @@ function CourseHeader({
           </p>
         </div>
 
-        <div className="flex-none text-gray3 bg-white p-6 rounded-lg shadow-lg">
+        <div className=" text-gray3 bg-white p-6 rounded-lg shadow-lg">
           <img
             src={img}
             alt="Course"
