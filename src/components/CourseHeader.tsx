@@ -23,13 +23,13 @@ function CourseHeader({
   img,
 }: CourseHeaderType) {
   return (
-    <div className="bg-[#2D2F31] text-white py-6">
+    <div className="bg-[#2D2F31] text-white py-4">
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4">
         <div className="flex-1 md:mr-10 mb-8 md:mb-0">
           <h2 className="text-4xl font-bold mb-4">{courseName}</h2>
           <p className="text-lg mb-4">{coursetitle}</p>
           <div className="flex flex-wrap gap-4 items-center mb-6">
-            <div className="px-4 py-2 bg-orange text-white rounded-sm text-sm font-semibold">
+            <div className="px-4 py-2 bg-orange  rounded-sm text-sm font-semibold">
               Best Seller
             </div>
             <div className="flex items-center space-x-4">
