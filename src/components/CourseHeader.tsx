@@ -1,4 +1,5 @@
 import { IoStarSharp } from "react-icons/io5";
+import { PiStudentFill } from "react-icons/pi";
 
 interface CourseHeaderType {
   courseName: string;
@@ -34,11 +35,12 @@ function CourseHeader({
             <div className="flex items-center space-x-4">
               <div className="flex gap-1 items-center">
                 <IoStarSharp color="yellow" />
-                <p className="text-lg font-semibold">{courseRating}</p>
+                <p className=" font-semibold">{courseRating}</p>
               </div>
               <p className="text-sm text-gray-300">({ratingCount} ratings)</p>
             </div>
-            <div className="text-sm text-gray-300">
+            <div className="flex items-center text-sm text-gray-300 gap-2">
+              <PiStudentFill size={17} />
               <p>{countstudent} students</p>
             </div>
           </div>
