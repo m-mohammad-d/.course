@@ -1,3 +1,4 @@
+import CourseContent from "../components/CourseContent";
 import CourseFeatures from "../components/CourseFeatures";
 import CourseHeader from "../components/CourseHeader";
 import Spinner from "../components/Spinner";
@@ -25,6 +26,7 @@ function CoursePage() {
       <div className="container mx-auto px-4">
         <CourseFeatures courseTime={data?.course.coursetime} />
         <TopCompaniesNotice />
+        <CourseContent courseSection={data?.course.section} courseTime={data?.course.coursetime} courselectures={data?.course.lectures} />
       </div>
     </div>
   );
