@@ -1,6 +1,6 @@
 function TopCompaniesNotice() {
   return (
-    <div className="p-6 shadow-lg rounded-lg">
+    <div className="p-6 shadow-lg rounded-lg mb-6">
       <div className="mb-4">
         <span className="text-xl font-semibold text-gray-800 block">
           Top companies offer this course to their employees
@@ -8,12 +8,10 @@ function TopCompaniesNotice() {
         <span className="text-sm text-gray-600 mt-2 block">
           This course was selected for our collection of top-rated courses
           trusted by businesses worldwide.
-          <a href="#" className="text-blue-500 underline">
-            Learn more
-          </a>
+          <span className="text-blue-500">Learn more</span>
         </span>
       </div>
-      <div className="flex justify-center space-x-4">
+      <div className="flex justify-between">
         <img
           src="https://s.udemycdn.com/partner-logos/v4/nasdaq-dark.svg"
           alt="Nasdaq"
