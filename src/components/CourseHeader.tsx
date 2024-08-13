@@ -1,3 +1,5 @@
+import { IoStarSharp } from "react-icons/io5";
+
 interface CourseHeaderType {
   courseName: string;
   coursetitle: string;
@@ -29,15 +31,20 @@ function CourseHeader({
             <div className="px-4 py-2 bg-orange text-white rounded-sm text-sm font-semibold">
               Best Seller
             </div>
-            <div className="flex items-center space-x-2">
-              <p className="text-lg font-semibold">{courseRating}</p>
+            <div className="flex items-center space-x-4">
+              <div className="flex gap-1 items-center">
+                <IoStarSharp color="yellow" />
+                <p className="text-lg font-semibold">{courseRating}</p>
+              </div>
               <p className="text-sm text-gray-300">({ratingCount} ratings)</p>
             </div>
             <div className="text-sm text-gray-300">
               <p>{countstudent} students</p>
             </div>
           </div>
-          <p className="text-sm text-gray-400">Created by {instructor}</p>
+          <p className="text-sm">
+            Created by <span className="text-orange">{instructor}</span>
+          </p>
         </div>
 
         <div className="flex-none text-gray3 bg-white p-6 rounded-lg shadow-lg">
@@ -46,7 +53,7 @@ function CourseHeader({
             alt="Course"
             className="w-full h-48 object-cover rounded-lg mb-4"
           />
-          <div className="mb-4">
+          <div className="mb-4 flex justify-between items-center">
             <p className="text-2xl font-bold">${price}</p>
             <p className="text-sm text-gray-600">30-Day Money-Back Guarantee</p>
           </div>
