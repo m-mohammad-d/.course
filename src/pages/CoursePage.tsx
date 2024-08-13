@@ -21,7 +21,9 @@ function CoursePage() {
         price={data?.course.price}
         img={data?.course.image}
       />
-      <CourseFeatures courseTime={data?.course.coursetime} />
+      <div className="container mx-auto px-4">
+        <CourseFeatures courseTime={data?.course.coursetime} />
+      </div>
     </div>
   );
 }
