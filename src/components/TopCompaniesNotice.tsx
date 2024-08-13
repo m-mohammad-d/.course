@@ -1,8 +1,8 @@
 function TopCompaniesNotice() {
   return (
-    <div className="p-6 shadow-lg rounded-lg mb-6">
+    <div className="p-8 shadow-lg rounded-lg my-8 border border-gray-300 ">
       <div className="mb-4">
-        <span className="text-xl font-semibold text-gray-800 block">
+        <span className="text-xl font-semibold text-gray2 block">
           Top companies offer this course to their employees
         </span>
         <span className="text-sm text-gray-600 mt-2 block">
