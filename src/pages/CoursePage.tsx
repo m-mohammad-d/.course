@@ -1,3 +1,4 @@
+import CourseFeatures from "../components/CourseFeatures";
 import CourseHeader from "../components/CourseHeader";
 import Spinner from "../components/Spinner";
 import useGetCourse from "../hooks/useGetCourse";
@@ -20,6 +21,7 @@ function CoursePage() {
         price={data?.course.price}
         img={data?.course.image}
       />
+      <CourseFeatures courseTime={data?.course.coursetime} />
     </div>
   );
 }
