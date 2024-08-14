@@ -1,3 +1,4 @@
+import CourseComments from "../components/CourseComments";
 import CourseContent from "../components/CourseContent";
 import CourseFeatures from "../components/CourseFeatures";
 import CourseHeader from "../components/CourseHeader";
@@ -35,6 +36,10 @@ function CoursePage() {
         />
         <CourseRequirements requirements={data?.course.Requirements} />
         <CourseInstructor Instructor={data?.course.instructor} />
+        <CourseComments
+          courseRating={data?.course.rating}
+          comments={data?.course.comments}
+        />
       </div>
     </div>
   );
