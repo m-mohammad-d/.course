@@ -15,13 +15,14 @@ function CoursePage() {
     error: courseError,
     isLoading: isCourseLoading,
   } = useGetCourse();
-  const instructorId = courseData?.course.instructorId;
+  const instructorId = courseData?.instructorId;
+  console.log(courseData);
+
   const {
     data: instructorData,
     error: instructorError,
     isLoading: isInstructorLoading,
   } = useGetInstructor(instructorId);
-  console.log(instructorData);
 
   if (isCourseLoading || isInstructorLoading) return <Spinner />;
   if (courseError || instructorError)
@@ -30,28 +31,28 @@ function CoursePage() {
   return (
     <div>
       <CourseHeader
-        courseName={courseData?.course.name}
-        coursetitle={courseData?.course.title}
-        courseRating={courseData?.course.rating}
-        ratingCount={courseData?.course.comments?.length}
+        courseName={courseData?.name}
+        coursetitle={courseData?.title}
+        courseRating={courseData?.rating}
+        ratingCount={courseData?.comments?.length}
         instructor={instructorData.name}
-        countstudent={courseData?.course.student_count}
-        price={courseData?.course.price}
-        img={courseData?.course.image}
+        countstudent={courseData?.student_count}
+        price={courseData?.price}
+        img={courseData?.image}
       />
       <div className="container mx-auto px-4 my-6">
-        <CourseFeatures courseTime={courseData?.course.coursetime} />
+        <CourseFeatures courseTime={courseData?.coursetime} />
         <TopCompaniesNotice />
         <CourseContent
-          courseSection={courseData?.course.section}
-          courseTime={courseData?.course.coursetime}
-          courselectures={courseData?.course.lectures}
+          courseSection={courseData?.section}
+          courseTime={courseData?.coursetime}
+          courselectures={courseData?.lectures}
         />
-        <CourseRequirements requirements={courseData?.course.Requirements} />
+        <CourseRequirements requirements={courseData?.Requirements} />
         <CourseInstructor instructor={instructorData} />
         <CourseComments
-          courseRating={courseData?.course.rating}
-          comments={courseData?.course.comments}
+          courseRating={courseData?.rating}
+          comments={courseData?.comments}
         />
       </div>
     </div>

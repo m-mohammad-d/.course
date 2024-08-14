@@ -5,10 +5,11 @@ import useGetCourses from "../hooks/useGetCourses";
 
 function CourseListPage() {
   const { data: courses, isLoading } = useGetCourses();
+  console.log(courses);
+
   const [sortOption, setSortOption] = useState<string>("default");
 
   if (isLoading) return <Spinner />;
-
 
   const confirmedCourses = courses.filter((course) => course.isConfirmed);
 
@@ -21,7 +22,7 @@ function CourseListPage() {
       case "students":
         return b.countstudent - a.countstudent;
       case "price":
-        return a.price - b.price;
+        return parseFloat(a.price) - parseFloat(b.price);
       default:
         return 0;
     }

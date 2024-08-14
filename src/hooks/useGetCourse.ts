@@ -4,6 +4,7 @@ import { getCourseById } from "../services/apiCourses";
 
 function useGetCourse() {
   const { id } = useParams();
+  
 
   const {data, error, isPending } = useQuery({
     queryKey: ["getCourse", id],

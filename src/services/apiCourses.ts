@@ -1,13 +1,21 @@
 import supabase from "./supabase";
 
 export async function getCourse() {
-  const { data: courses, error } = await supabase.from("courses").select("*");
+  const { data: courses, error } = await supabase.from("courses").select(`
+    *,
+    instructors (
+      name
+    )
+  `);
+
   if (error) throw new Error(error.message);
 
   return courses;
 }
 
 export async function getCourseById(courseId: string | undefined) {
+  if (!courseId) throw new Error("Course ID is required");
+
   const { data: course, error } = await supabase
     .from("courses")
     .select("*")
@@ -16,8 +24,10 @@ export async function getCourseById(courseId: string | undefined) {
 
   if (error) {
     console.error("Error fetching course:", error.message);
+    throw new Error(error.message);
   }
-  return { course };
+
+  return course;
 }
 
 export async function getCoursesByInstructor(instructorId: string) {
