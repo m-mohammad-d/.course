@@ -15,7 +15,7 @@ interface CourseCardProps {
   course: CourseCardType;
 }
 
-function CourseCard({ course }: CourseCardProps) {
+function CourseCards({ course }: CourseCardProps) {
   return (
     <div className="flex flex-col bg-white shadow-xl rounded-lg overflow-hidden">
       <img
@@ -31,7 +31,7 @@ function CourseCard({ course }: CourseCardProps) {
             {course.rating}
           </span>
           <span className="text-gray-500 text-xs ml-1">
-            ({course.reviews.toLocaleString()})
+            ({course.reviews})
           </span>
         </div>
         <div className="flex items-center">
@@ -50,4 +50,4 @@ function CourseCard({ course }: CourseCardProps) {
   );
 }
 
-export default CourseCard;
+export default CourseCards;

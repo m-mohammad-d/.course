@@ -12,6 +12,7 @@ import UserLayout from "./layout/userLayout";
 import EditProfilePage from "./pages/EditProfilePage";
 import EditPasswordPage from "./pages/EditPasswordPage";
 import CourseListPage from "./pages/CourseListPage";
+import InstructorPage from "./pages/InstructorPage";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: "/courses",
         element: <CourseListPage />,
+      },
+      {
+        path: "/Instructor/:id",
+        element: <InstructorPage />,
       },
       {
         element: <PrivateRoute />,

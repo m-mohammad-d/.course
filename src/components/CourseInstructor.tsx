@@ -2,6 +2,7 @@ import { FaStar, FaUserFriends } from "react-icons/fa";
 import { IoIosPlayCircle } from "react-icons/io";
 import { LiaCertificateSolid } from "react-icons/lia";
 import useGetCoursesByInstructor from "../hooks/useGetCoursesByInstructor";
+import { Link } from "react-router-dom";
 
 function CourseInstructor({
   instructor,
@@ -27,26 +28,21 @@ function CourseInstructor({
       <h2 className="text-2xl font-bold mb-6 text-gray2">Instructor</h2>
       <div className="flex flex-col lg:flex-row items-start lg:items-center">
         <div className="flex items-center gap-4 mb-4 lg:mb-0">
-          <a
-            href={`/user/${instructor.name.replace(/\s+/g, "-").toLowerCase()}`}
-            className="shrink-0"
-          >
+          <Link to={`/user/${instructor.id}`} className="shrink-0">
             <img
               src={instructor.image_url}
               alt={instructor.name}
               className="w-28 h-28 rounded-full border-4 border-gray-200 lg:w-32 lg:h-32"
             />
-          </a>
+          </Link>
           <div className="flex flex-col">
             <div className="text-xl font-semibold text-gray-800">
-              <a
-                href={`/user/${instructor.name
-                  .replace(/\s+/g, "-")
-                  .toLowerCase()}`}
+              <Link
+                to={`/Instructor/${instructor.id}`}
                 className="hover:text-orange transition-all delay-100"
               >
                 {instructor.name}
-              </a>
+              </Link>
             </div>
             <div className="text-md text-gray-600">{instructor.job_title}</div>
           </div>

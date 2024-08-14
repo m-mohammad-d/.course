@@ -45,7 +45,7 @@ export async function getCourseById(courseId: string | undefined) {
   return course;
 }
 
-export async function getCoursesByInstructor(instructorId: string) {
+export async function getCoursesByInstructor(instructorId: string | undefined) {
   const { data: courses, error } = await supabase
     .from("courses")
     .select("*")
