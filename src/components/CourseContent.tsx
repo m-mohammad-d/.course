@@ -15,9 +15,12 @@ function CourseContent({
       <ul className="flex gap-4 items-center my-6 text-gray3">
         <li>{courseSection} sections </li>
         <li>{courselectures} lectures </li>
-        <li>{courseTime} 5h 58m total length </li>
+        <li>{courseTime} total length </li>
       </ul>
-      <p>Due to database memory limitations, we are unable to display the course content at this time.</p>
+      <p>
+        Due to database memory limitations, we are unable to display the course
+        content at this time.
+      </p>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import CourseContent from "../components/CourseContent";
 import CourseFeatures from "../components/CourseFeatures";
 import CourseHeader from "../components/CourseHeader";
+import CourseRequirements from "../components/CourseRequirements";
 import Spinner from "../components/Spinner";
 import TopCompaniesNotice from "../components/TopCompaniesNotice";
 import useGetCourse from "../hooks/useGetCourse";
@@ -26,7 +27,12 @@ function CoursePage() {
       <div className="container mx-auto px-4">
         <CourseFeatures courseTime={data?.course.coursetime} />
         <TopCompaniesNotice />
-        <CourseContent courseSection={data?.course.section} courseTime={data?.course.coursetime} courselectures={data?.course.lectures} />
+        <CourseContent
+          courseSection={data?.course.section}
+          courseTime={data?.course.coursetime}
+          courselectures={data?.course.lectures}
+        />
+        <CourseRequirements requirements={data?.course.Requirements} />
       </div>
     </div>
   );
