@@ -1,6 +1,7 @@
 import CourseContent from "../components/CourseContent";
 import CourseFeatures from "../components/CourseFeatures";
 import CourseHeader from "../components/CourseHeader";
+import CourseInstructor from "../components/CourseInstructor";
 import CourseRequirements from "../components/CourseRequirements";
 import Spinner from "../components/Spinner";
 import TopCompaniesNotice from "../components/TopCompaniesNotice";
@@ -33,6 +34,7 @@ function CoursePage() {
           courselectures={data?.course.lectures}
         />
         <CourseRequirements requirements={data?.course.Requirements} />
+        <CourseInstructor Instructor={data?.course.instructor} />
       </div>
     </div>
   );
