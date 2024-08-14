@@ -25,7 +25,7 @@ function CoursePage() {
         price={data?.course.price}
         img={data?.course.image}
       />
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 my-6">
         <CourseFeatures courseTime={data?.course.coursetime} />
         <TopCompaniesNotice />
         <CourseContent
