@@ -4,7 +4,7 @@ import { LiaCertificateSolid } from "react-icons/lia";
 
 function CourseInstructor({ Instructor }: { Instructor: string }) {
   return (
-    <div className="p-6 bg-lightGray rounded-lg shadow-xl">
+    <div className="p-6 rounded-lg shadow-xl">
       <h2 className="text-2xl font-bold mb-6 text-gray2">Instructor</h2>
       <div className="flex flex-col lg:flex-row items-start lg:items-center">
         <div className="flex items-center gap-4 mb-4 lg:mb-0">
