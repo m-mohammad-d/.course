@@ -4,8 +4,8 @@ import { LiaCertificateSolid } from "react-icons/lia";
 
 function CourseInstructor({ Instructor }: { Instructor: string }) {
   return (
-    <div className="p-6 bg-lightGray rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold mb-6 text-gray-800">Instructor</h2>
+    <div className="p-6 bg-lightGray rounded-lg shadow-xl">
+      <h2 className="text-2xl font-bold mb-6 text-gray2">Instructor</h2>
       <div className="flex flex-col lg:flex-row items-start lg:items-center">
         <div className="flex items-center gap-4 mb-4 lg:mb-0">
           <a href="/user/jonasschmedtmann/" className="shrink-0">
@@ -17,7 +17,7 @@ function CourseInstructor({ Instructor }: { Instructor: string }) {
           </a>
           <div className="flex flex-col">
             <div className="text-xl font-semibold text-gray-800">
-              <a href="/user/jonasschmedtmann/" className="hover:text-blue-600">
+              <a href="/user/jonasschmedtmann/" className="hover:text-orange transition-all delay-100">
                 {Instructor}
               </a>
             </div>
@@ -45,7 +45,7 @@ function CourseInstructor({ Instructor }: { Instructor: string }) {
           </li>
         </ul>
       </div>
-      <div className="mt-6 text-sm text-gray-700">
+      <div className="mt-6 text-sm text-gray3">
         <p className="line-clamp-6 lg:line-clamp-none">
           Hi, I'm Jonas! I'm one of Udemy's Top Instructors and all my premium
           courses have earned the best-selling status for outstanding
@@ -55,7 +55,7 @@ function CourseInstructor({ Instructor }: { Instructor: string }) {
           a Master's degree in Engineering. But see for yourself, enroll in one
           of my courses, and join 1,500,000+ happy students today.
         </p>
-        <button className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-all duration-300">
+        <button className="mt-4 px-4 py-2 bg-orange text-white rounded-md hover:bg-orangePeel transition-all duration-300">
           View Profile
         </button>
       </div>
