@@ -46,7 +46,7 @@ function CourseCard({
         </div>
         <div className="flex items-center mt-4 text-sm">
           <span className="text-yellow-500 font-semibold">{rating} ⭐</span>
-          <span className="text-gray-500 ml-2">({comments.length})</span>
+          <span className="text-gray-500 ml-2">({comments?.length})</span>
           <span className="text-gray-500 ml-2">
             • {coursetime} hours • {lectures} lectures
           </span>

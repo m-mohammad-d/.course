@@ -7,38 +7,51 @@ import CourseRequirements from "../components/CourseRequirements";
 import Spinner from "../components/Spinner";
 import TopCompaniesNotice from "../components/TopCompaniesNotice";
 import useGetCourse from "../hooks/useGetCourse";
+import useGetInstructor from "../hooks/useGetInstructor";
 
 function CoursePage() {
-  const { data, error, isLoading } = useGetCourse();
-  console.log(data);
+  const {
+    data: courseData,
+    error: courseError,
+    isLoading: isCourseLoading,
+  } = useGetCourse();
+  const instructorId = courseData?.course.instructorId;
+  const {
+    data: instructorData,
+    error: instructorError,
+    isLoading: isInstructorLoading,
+  } = useGetInstructor(instructorId);
+  console.log(instructorData);
 
-  if (error) return <p>{error.message}</p>;
-  if (isLoading) return <Spinner />;
+  if (isCourseLoading || isInstructorLoading) return <Spinner />;
+  if (courseError || instructorError)
+    return <p>{courseError?.message || instructorError?.message}</p>;
+
   return (
     <div>
       <CourseHeader
-        courseName={data?.course.name}
-        coursetitle={data?.course.title}
-        courseRating={data?.course.rating}
-        ratingCount={data?.course.comments.length}
-        instructor={data?.course.instructor}
-        countstudent={data?.course.countstudent}
-        price={data?.course.price}
-        img={data?.course.image}
+        courseName={courseData?.course.name}
+        coursetitle={courseData?.course.title}
+        courseRating={courseData?.course.rating}
+        ratingCount={courseData?.course.comments?.length}
+        instructor={instructorData.name}
+        countstudent={courseData?.course.student_count}
+        price={courseData?.course.price}
+        img={courseData?.course.image}
       />
       <div className="container mx-auto px-4 my-6">
-        <CourseFeatures courseTime={data?.course.coursetime} />
+        <CourseFeatures courseTime={courseData?.course.coursetime} />
         <TopCompaniesNotice />
         <CourseContent
-          courseSection={data?.course.section}
-          courseTime={data?.course.coursetime}
-          courselectures={data?.course.lectures}
+          courseSection={courseData?.course.section}
+          courseTime={courseData?.course.coursetime}
+          courselectures={courseData?.course.lectures}
         />
-        <CourseRequirements requirements={data?.course.Requirements} />
-        <CourseInstructor Instructor={data?.course.instructor} />
+        <CourseRequirements requirements={courseData?.course.Requirements} />
+        <CourseInstructor instructor={instructorData} />
         <CourseComments
-          courseRating={data?.course.rating}
-          comments={data?.course.comments}
+          courseRating={courseData?.course.rating}
+          comments={courseData?.course.comments}
         />
       </div>
     </div>

@@ -19,3 +19,17 @@ export async function getCourseById(courseId: string | undefined) {
   }
   return { course };
 }
+
+export async function getCoursesByInstructor(instructorId: string) {
+  const { data: courses, error } = await supabase
+    .from("courses")
+    .select("*")
+    .eq("instructorId", instructorId);
+
+  if (error) {
+    console.error("Error fetching courses:", error.message);
+    throw new Error(error.message);
+  }
+
+  return courses;
+}

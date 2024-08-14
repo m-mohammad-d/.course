@@ -26,11 +26,11 @@ function CourseComments({ courseRating, comments }: CourseCommentsProps) {
       <div className="text-2xl text-gray-800 flex gap-2 items-center">
         <FaStar className="text-orange-400" />
         <h2 className="font-bold">
-          {courseRating} Course Rating - {comments.length} Ratings
+          {courseRating} Course Rating - {comments?.length} Ratings
         </h2>
       </div>
       <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-2">
-        {comments.slice(0, visibleCount).map((comment) => (
+        {comments?.slice(0, visibleCount).map((comment) => (
           <Comment
             key={comment.id}
             commentName={comment.name}
@@ -39,7 +39,7 @@ function CourseComments({ courseRating, comments }: CourseCommentsProps) {
           />
         ))}
       </div>
-      {visibleCount < comments.length && (
+      {visibleCount < comments?.length && (
         <div className="mt-4 text-center">
           <button
             onClick={handleShowMore}
