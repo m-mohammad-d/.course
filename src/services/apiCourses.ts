@@ -18,7 +18,22 @@ export async function getCourseById(courseId: string | undefined) {
 
   const { data: course, error } = await supabase
     .from("courses")
-    .select("*")
+    .select(
+      `
+    *,
+    instructors (
+      id,
+      name,
+      bio,
+      job_title,
+      image_url,
+      rating,
+      reviews_count,
+      students_count
+
+    )
+  `
+    )
     .eq("id", courseId)
     .single();
 

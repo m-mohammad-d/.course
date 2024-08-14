@@ -7,7 +7,6 @@ import CourseRequirements from "../components/CourseRequirements";
 import Spinner from "../components/Spinner";
 import TopCompaniesNotice from "../components/TopCompaniesNotice";
 import useGetCourse from "../hooks/useGetCourse";
-import useGetInstructor from "../hooks/useGetInstructor";
 
 function CoursePage() {
   const {
@@ -15,18 +14,10 @@ function CoursePage() {
     error: courseError,
     isLoading: isCourseLoading,
   } = useGetCourse();
-  const instructorId = courseData?.instructorId;
   console.log(courseData);
 
-  const {
-    data: instructorData,
-    error: instructorError,
-    isLoading: isInstructorLoading,
-  } = useGetInstructor(instructorId);
-
-  if (isCourseLoading || isInstructorLoading) return <Spinner />;
-  if (courseError || instructorError)
-    return <p>{courseError?.message || instructorError?.message}</p>;
+  if (isCourseLoading) return <Spinner />;
+  if (courseError) return <p>{courseError?.message}</p>;
 
   return (
     <div>
@@ -35,7 +26,7 @@ function CoursePage() {
         coursetitle={courseData?.title}
         courseRating={courseData?.rating}
         ratingCount={courseData?.comments?.length}
-        instructor={instructorData.name}
+        instructor={courseData?.instructors.name}
         countstudent={courseData?.student_count}
         price={courseData?.price}
         img={courseData?.image}
@@ -49,7 +40,7 @@ function CoursePage() {
           courselectures={courseData?.lectures}
         />
         <CourseRequirements requirements={courseData?.Requirements} />
-        <CourseInstructor instructor={instructorData} />
+        <CourseInstructor instructor={courseData?.instructors} />
         <CourseComments
           courseRating={courseData?.rating}
           comments={courseData?.comments}
