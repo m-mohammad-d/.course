@@ -6,7 +6,7 @@ interface FeatureCardType {
 
 function FeatureCard({ title, description, enterprise }: FeatureCardType) {
   return (
-    <div className="p-4 border border-orange-500 border-l-4 rounded-md shadow-xl h-auto md:h-44 mt-8 md:mt-10 mx-4 md:mx-8 lg:mx-16">
+    <div className="p-4 border border-orange border-l-4 rounded-md shadow-xl h-auto md:h-44 mt-8 md:mt-10 mx-4 md:mx-8 lg:mx-16">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
         <h3 className="font-bold text-lg mb-2 md:mb-0">{title}</h3>
         {enterprise && (
