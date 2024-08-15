@@ -1,4 +1,4 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 
 type UserRole = "user" | "teacher" | "admin" | null;
 
@@ -15,14 +15,27 @@ const getUserRole = (): UserRole => {
 };
 
 const PrivateRoute = () => {
-  const role = getUserRole();
+  const userRole = getUserRole();
+  const location = useLocation();
 
-  if (!role) return <Navigate to="/login" />;
+  const isUserRoute = location.pathname.startsWith("/user");
+  const isTeacherRoute = location.pathname.startsWith("/teacher");
 
-  if (role === "teacher") return <Navigate to="/teacher/dashboard" />;
-  if (role === "user") return <Navigate to="/user/mycourse" />;
+  if (isUserRoute && userRole === "user") {
+    return <Outlet />;
+  } else if (isTeacherRoute && userRole === "teacher") {
+    return <Outlet />;
+  } else if (!isUserRoute && !isTeacherRoute && userRole) {
 
-  return <Outlet />;
+    if (userRole === "user") {
+      return <Navigate to="/user/mycourse" />;
+    } else if (userRole === "teacher") {
+      return <Navigate to="/teacher/dashboard" />;
+    }
+  }
+
+
+  return <Navigate to="/login" />;
 };
 
 export default PrivateRoute;
