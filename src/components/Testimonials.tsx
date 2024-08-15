@@ -33,12 +33,12 @@ const TestimonialsData = [
 
 function Testimonials() {
   return (
-    <div className="bg-white py-10 mx-auto">
-      <div className="mx-16">
-        <h2 className="text-2xl  text-gray1 mb-8">
+    <div className="bg-white py-10">
+      <div className="mx-4 sm:mx-8 lg:mx-16 max-w-screen-lg">
+        <h2 className="text-lg sm:text-xl lg:text-2xl text-gray1 mb-6 sm:mb-8">
           See what others are achieving through learning
         </h2>
-        <div className="flex gap-8">
+        <div className="flex flex-wrap gap-4 sm:gap-6 lg:gap-8">
           {TestimonialsData.map((item, index) => (
             <TestimonialCard
               key={index}
