@@ -1,8 +1,8 @@
 function SearchBar() {
   return (
-    <div className="flex items-center bg-gray-200 mx-3 rounded-full p-3 w-3/5">
+    <div className="flex items-center bg-gray-200 rounded-full p-2 sm:p-3 w-full max-w-xs sm:max-w-md lg:max-w-lg mx-3">
       <svg
-        className="w-6 h-6 text-gray-600"
+        className="w-5 h-5 text-gray-600 sm:w-6 sm:h-6"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
