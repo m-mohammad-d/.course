@@ -8,7 +8,7 @@ import CoursePage from "./pages/CoursePage";
 import NotFoundPage from "./pages/NotFoundPage";
 import MyCourse from "./pages/MyCourse";
 import PrivateRoute from "./components/PrivateRoute";
-import UserLayout from "./layout/UserLayout";
+import UserLayout from "./layout/userLayout";
 import TeacherLayout from "./layout/TeacherLayout";
 import EditProfilePage from "./pages/EditProfilePage";
 import EditPasswordPage from "./pages/EditPasswordPage";
@@ -50,7 +50,7 @@ const router = createBrowserRouter([
     ],
   },
   {
-    element: <PrivateRoute />
+    element: <PrivateRoute />,
     children: [
       {
         element: <UserLayout />,
@@ -72,7 +72,6 @@ const router = createBrowserRouter([
       {
         element: <TeacherLayout />,
         children: [
-          // روت‌های مربوط به معلم
           {
             path: "/teacher/dashboard",
             element: <div>Teacher Dashboard</div>,
