@@ -1,4 +1,4 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 
 type UserRole = "user" | "teacher" | "admin" | null;
 
@@ -22,7 +22,7 @@ const PrivateRoute = () => {
   if (role === "teacher") return <Navigate to="/teacher/dashboard" />;
   if (role === "user") return <Navigate to="/user/mycourse" />;
 
-  return <Navigate to="/login" />;
+  return <Outlet />;
 };
 
 export default PrivateRoute;
