@@ -1,7 +1,7 @@
 function FutureOfWorkTrends() {
   return (
     <div className=" bg-lightGray">
-      <div className="mx-24 flex flex-col md:flex-row items-center justify-center py-12 px-4 md:px-8">
+      <div className="mx-4 md-mx-8 lg-mx-24 flex flex-col md:flex-row items-center justify-center py-12 px-4 md:px-8">
         <div className="text-left md:text-left w-full md:w-1/3">
           <h2 className="text-3xl font-bold mb-4 text-gray1">
             Top trends for the future of work
