@@ -45,7 +45,7 @@ export async function signup({ email, password, full_name }: signUpType) {
         facebook: "",
         linkedin: "",
         youtube: "",
-        role: "user",
+        roles: "user",
       },
     },
   });
