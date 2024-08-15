@@ -14,7 +14,6 @@ function CoursePage() {
     error: courseError,
     isLoading: isCourseLoading,
   } = useGetCourse();
-  console.log(courseData);
 
   if (isCourseLoading) return <Spinner />;
   if (courseError) return <p>{courseError?.message}</p>;

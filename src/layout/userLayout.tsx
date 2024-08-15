@@ -3,10 +3,12 @@ import Sidebar from "../components/SideBar";
 
 function UserLayout() {
   return (
-    <div className="flex justify-center my-12">
-      <div className="flex flex-col md:flex-row w-full md:w-3/4 lg:w-2/3">
-        <Sidebar />
-        <div className="w-full md:w-3/4 mt-4 md:mt-0 md:ml-8">
+    <div className="flex justify-center my-12 px-4">
+      <div className="flex flex-col md:flex-row w-full max-w-7xl">
+        <div className="w-full md:w-1/4 mb-4 md:mb-0">
+          <Sidebar />
+        </div>
+        <div className="w-full md:w-3/4 md:ml-8">
           <Outlet />
         </div>
       </div>
