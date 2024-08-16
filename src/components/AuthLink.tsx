@@ -8,7 +8,7 @@ interface AuthLinkProps {
 
 function AuthLink({ text, href, type }: AuthLinkProps) {
   const backgroundColor =
-    type === "signup" ? "bg-gray1" : type === "dashboard" ? "bg-blue-600" : "bg-white";
+    type === "signup" ? "bg-gray1" : type === "dashboard" ? "bg-orange" : "bg-white";
   const textColor =
     type === "signup" ? "text-white" : type === "dashboard" ? "text-white" : "text-gray1";
 
