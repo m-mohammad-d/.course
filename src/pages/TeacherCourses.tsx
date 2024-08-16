@@ -1,5 +1,5 @@
-function TeacherMyCourses() {
+function TeacherCourses() {
   return <div>TeacherMyCourse</div>;
 }
 
-export default TeacherMyCourses;
+export default TeacherCourses;

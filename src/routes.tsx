@@ -14,6 +14,8 @@ import EditProfilePage from "./pages/EditProfilePage";
 import EditPasswordPage from "./pages/EditPasswordPage";
 import CourseListPage from "./pages/CourseListPage";
 import InstructorPage from "./pages/InstructorPage";
+import TeacherCourses from "./pages/TeacherCourses";
+import AddCourse from "./pages/AddCourse";
 
 const router = createBrowserRouter([
   {
@@ -73,16 +75,20 @@ const router = createBrowserRouter([
         element: <TeacherLayout />,
         children: [
           {
-            path: "/teacher/dashboard",
-            element: <div>Teacher Dashboard</div>,
+            path: "/teacher/edit-profile",
+            element: <EditPasswordPage />,
           },
           {
-            path: "/teacher/courses",
-            element: <div>My Courses</div>,
+            path: "/teacher/edit-password",
+            element: <EditProfilePage />,
           },
           {
-            path: "/teacher/add-course",
-            element: <div>Add New Course</div>,
+            path: "/teacher/myCourse",
+            element: <TeacherCourses />,
+          },
+          {
+            path: "/teacher/addNewCourse",
+            element: <AddCourse />,
           },
         ],
       },
