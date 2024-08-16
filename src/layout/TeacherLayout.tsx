@@ -1,11 +1,11 @@
 import { Outlet } from "react-router-dom";
 import Sidebar from "../components/SideBar";
 const items = [
-  { name: "editProfile", path: "/tehacer/edit-profile" },
+  { name: "editProfile", path: "/teacher/edit-profile" },
   { name: "Password", path: "/teacher/edit-password" },
   { name: "Photo", path: "#" },
   { name: "myCourse", path: "/teacher/myCourse" },
-  { name: "addNewCourse", path: "/user/addNewCourse" },
+  { name: "addNewCourse", path: "/teacher/addNewCourse" },
   { name: "Privacy", path: "#" },
   { name: "Notifications", path: "#" },
   { name: "API clients", path: "#" },

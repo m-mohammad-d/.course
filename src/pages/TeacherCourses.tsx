@@ -1,5 +1,5 @@
 function TeacherCourses() {
-  return <div>TeacherMyCourse</div>;
+  return <div></div>;
 }
 
 export default TeacherCourses;
