@@ -76,7 +76,7 @@ const router = createBrowserRouter([
         children: [
           {
             path: "/teacher/edit-profile",
-            element: <EditPasswordPage />,
+            element: <EditProfilePage />,
           },
           {
             path: "/teacher/edit-password",
