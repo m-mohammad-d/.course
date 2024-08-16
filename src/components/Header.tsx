@@ -1,23 +1,22 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../asset/image/udemyLogo.png";
 import SearchBar from "./SearchBar";
 import AuthLink from "./AuthLink";
 import { RiShoppingCart2Line } from "react-icons/ri";
 import { HiMenu, HiX } from "react-icons/hi";
+import { getUserRole } from "../utils/getUserRole";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  useEffect(() => {
-    const token = localStorage.getItem("sb-llgyyyodgevtfoidrwjf-auth-token");
-    setIsLoggedIn(!!token);
-  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  // تعیین مسیر مناسب بر اساس نقش کاربر
+  const dashboardLink =
+    getUserRole() === "teacher" ? "/teacher/dashboard" : "/user/edit-profile";
 
   return (
     <header className="flex items-center justify-between p-4 md:p-6 bg-white shadow-md relative">
@@ -54,12 +53,8 @@ function Header() {
 
       <div className="hidden md:flex items-center space-x-4">
         <RiShoppingCart2Line className="text-gray-600" size={28} />
-        {isLoggedIn ? (
-          <AuthLink
-            text="Dashboard"
-            href="/user/edit-profile"
-            type="dashboard"
-          />
+        {getUserRole() ? (
+          <AuthLink text="Dashboard" href={dashboardLink} type="dashboard" />
         ) : (
           <>
             <AuthLink text="Login" type="login" href="/login" />
@@ -90,12 +85,8 @@ function Header() {
           <li className="flex items-center space-x-2">
             <RiShoppingCart2Line className="text-gray-600" size={28} />
           </li>
-          {isLoggedIn ? (
-            <AuthLink
-              text="Dashboard"
-              href="/user/edit-profile"
-              type="dashboard"
-            />
+          {getUserRole() ? (
+            <AuthLink text="Dashboard" href={dashboardLink} type="dashboard" />
           ) : (
             <>
               <AuthLink text="Login" type="login" href="/login" />
