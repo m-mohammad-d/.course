@@ -14,9 +14,9 @@ function Header() {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // تعیین مسیر مناسب بر اساس نقش کاربر
+
   const dashboardLink =
-    getUserRole() === "teacher" ? "/teacher/dashboard" : "/user/edit-profile";
+    getUserRole() === "teacher" ? "/teacher/edit-profile" : "/user/edit-profile";
 
   return (
     <header className="flex items-center justify-between p-4 md:p-6 bg-white shadow-md relative">
