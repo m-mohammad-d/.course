@@ -80,7 +80,7 @@ const router = createBrowserRouter([
           },
           {
             path: "/teacher/edit-password",
-            element: <EditProfilePage />,
+            element: <EditPasswordPage />,
           },
           {
             path: "/teacher/myCourse",
