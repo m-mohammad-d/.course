@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import logo from "../asset/image/udemyLogo.png";
 import SearchBar from "./SearchBar";
@@ -8,6 +8,12 @@ import { HiMenu, HiX } from "react-icons/hi";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("jwtToken");
+    setIsLoggedIn(!!token);
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -20,7 +26,6 @@ function Header() {
           <img src={logo} alt="Logo" className="h-6 md:h-8 lg:h-10" />
         </Link>
       </div>
-
 
       <div className="hidden md:flex flex-1 mx-2 md:mx-4 lg:mx-8">
         <SearchBar />
@@ -35,7 +40,6 @@ function Header() {
         </button>
       </div>
 
-
       <ul className="hidden md:flex items-center space-x-4 lg:space-x-6">
         <li className="p-2 lg:p-3 hover:text-orange text-gray-600 transition-all duration-300 ease-in">
           <Link to="/pricing">Plans & Pricing</Link>
@@ -48,21 +52,22 @@ function Header() {
         </li>
       </ul>
 
-
       <div className="hidden md:flex items-center space-x-4">
         <RiShoppingCart2Line className="text-gray-600" size={28} />
-        <AuthLink text="Login" type="login" href="/login" />
-        <AuthLink text="Sign Up" type="signup" href="/signup" />
+        {isLoggedIn ? (
+          <AuthLink text="Dashboard" href="/dashboard" />
+        ) : (
+          <>
+            <AuthLink text="Login" type="login" href="/login" />
+            <AuthLink text="Sign Up" type="signup" href="/signup" />
+          </>
+        )}
       </div>
-
 
       {isMenuOpen && (
         <ul className="fixed top-0 left-0 h-full w-64 bg-white p-4 space-y-4 shadow-lg md:hidden z-50">
           <li className="flex justify-end">
-            <button
-              onClick={toggleMenu}
-              className="text-gray-700"
-            >
+            <button onClick={toggleMenu} className="text-gray-700">
               <HiX size={28} />
             </button>
           </li>
@@ -81,12 +86,14 @@ function Header() {
           <li className="flex items-center space-x-2">
             <RiShoppingCart2Line className="text-gray-600" size={28} />
           </li>
-          <li>
-            <AuthLink text="Login" type="login" href="/login" />
-          </li>
-          <li>
-            <AuthLink text="Sign Up" type="signup" href="/signup" />
-          </li>
+          {isLoggedIn ? (
+            <AuthLink text="Dashboard" href="/dashboard" />
+          ) : (
+            <>
+              <AuthLink text="Login" type="login" href="/login" />
+              <AuthLink text="Sign Up" type="signup" href="/signup" />
+            </>
+          )}
         </ul>
       )}
     </header>
