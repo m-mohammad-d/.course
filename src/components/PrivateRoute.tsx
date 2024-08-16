@@ -1,18 +1,5 @@
 import { Navigate, Outlet, useLocation } from "react-router-dom";
-
-type UserRole = "user" | "teacher" | "admin" | null;
-
-const getUserRole = (): UserRole => {
-  const token = localStorage.getItem("sb-llgyyyodgevtfoidrwjf-auth-token");
-  if (!token) return null;
-
-  const payloadBase64 = token.split(".")[1];
-  const decodedPayload = JSON.parse(atob(payloadBase64));
-
-  const role = decodedPayload?.user_metadata?.roles || null;
-
-  return role as UserRole;
-};
+import { getUserRole } from "../utils/getUserRole";
 
 const PrivateRoute = () => {
   const userRole = getUserRole();
@@ -26,14 +13,12 @@ const PrivateRoute = () => {
   } else if (isTeacherRoute && userRole === "teacher") {
     return <Outlet />;
   } else if (!isUserRoute && !isTeacherRoute && userRole) {
-
     if (userRole === "user") {
       return <Navigate to="/user/mycourse" />;
     } else if (userRole === "teacher") {
       return <Navigate to="/teacher/dashboard" />;
     }
   }
-
 
   return <Navigate to="/login" />;
 };
