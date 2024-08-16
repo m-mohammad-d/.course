@@ -16,6 +16,11 @@ import CourseListPage from "./pages/CourseListPage";
 import InstructorPage from "./pages/InstructorPage";
 import TeacherCourses from "./pages/TeacherCourses";
 import AddCourse from "./pages/AddCourse";
+import TeacherRequestsPage from "./pages/TeacherRequestsPage";
+import AdminReportsPage from "./pages/AdminReportsPage";
+import ManageCoursesPage from "./pages/ManageCoursesPage";
+import ManageUsersPage from "./pages/ManageUsersPage";
+import AdminLayout from "./layout/AdminLayout";
 
 const router = createBrowserRouter([
   {
@@ -89,6 +94,27 @@ const router = createBrowserRouter([
           {
             path: "/teacher/addNewCourse",
             element: <AddCourse />,
+          },
+          {
+            element: <AdminLayout />,
+            children: [
+              {
+                path: "/admin/manage-users",
+                element: <ManageUsersPage />,
+              },
+              {
+                path: "/admin/manage-courses",
+                element: <ManageCoursesPage />,
+              },
+              {
+                path: "/admin/reports",
+                element: <AdminReportsPage />,
+              },
+              {
+                path: "/admin/teacher-requests",
+                element: <TeacherRequestsPage />,
+              },
+            ],
           },
         ],
       },
