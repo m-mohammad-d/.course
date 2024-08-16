@@ -1,10 +1,18 @@
 import { useMutation } from "@tanstack/react-query";
-import { login as userLogin } from "../services/apiAuth";   
+import { login as userLogin } from "../services/apiAuth";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { getUserRole } from "../utils/getUserRole";
 
 function useLogin() {
   const navigate = useNavigate();
+  const userRole = getUserRole();
+  const navigateLink =
+    userRole === "teacher"
+      ? "/teacher/edit-profile"
+      : userRole === "admin"
+      ? "/admin/manage-users"
+      : "/user/edit-profile";
 
   const { mutate: login, isPending } = useMutation({
     mutationFn: async ({
@@ -26,7 +34,7 @@ function useLogin() {
       return userLogin({ email, password });
     },
     onSuccess: () => {
-      navigate("/user/myCourse");
+      navigate(navigateLink);
       toast.success("Login successful!");
     },
     onError: (err: Error) => {
