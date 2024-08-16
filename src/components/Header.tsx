@@ -14,9 +14,13 @@ function Header() {
     setIsMenuOpen(!isMenuOpen);
   };
 
-
+  const userRole = getUserRole();
   const dashboardLink =
-    getUserRole() === "teacher" ? "/teacher/edit-profile" : "/user/edit-profile";
+    userRole === "teacher"
+      ? "/teacher/edit-profile"
+      : userRole === "admin"
+      ? "/admin/manage-users"
+      : "/user/edit-profile";
 
   return (
     <header className="flex items-center justify-between p-4 md:p-6 bg-white shadow-md relative">

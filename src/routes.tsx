@@ -95,26 +95,26 @@ const router = createBrowserRouter([
             path: "/teacher/addNewCourse",
             element: <AddCourse />,
           },
+        ],
+      },
+      {
+        element: <AdminLayout />,
+        children: [
           {
-            element: <AdminLayout />,
-            children: [
-              {
-                path: "/admin/manage-users",
-                element: <ManageUsersPage />,
-              },
-              {
-                path: "/admin/manage-courses",
-                element: <ManageCoursesPage />,
-              },
-              {
-                path: "/admin/reports",
-                element: <AdminReportsPage />,
-              },
-              {
-                path: "/admin/teacher-requests",
-                element: <TeacherRequestsPage />,
-              },
-            ],
+            path: "/admin/manage-users",
+            element: <ManageUsersPage />,
+          },
+          {
+            path: "/admin/manage-courses",
+            element: <ManageCoursesPage />,
+          },
+          {
+            path: "/admin/reports",
+            element: <AdminReportsPage />,
+          },
+          {
+            path: "/admin/teacher-requests",
+            element: <TeacherRequestsPage />,
           },
         ],
       },
