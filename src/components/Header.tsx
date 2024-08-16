@@ -11,7 +11,7 @@ function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    const token = localStorage.getItem("jwtToken");
+    const token = localStorage.getItem("sb-llgyyyodgevtfoidrwjf-auth-token");
     setIsLoggedIn(!!token);
   }, []);
 
@@ -55,7 +55,7 @@ function Header() {
       <div className="hidden md:flex items-center space-x-4">
         <RiShoppingCart2Line className="text-gray-600" size={28} />
         {isLoggedIn ? (
-          <AuthLink text="Dashboard" href="/dashboard" />
+          <AuthLink text="Dashboard" href="/dashboard" type="dashboard" />
         ) : (
           <>
             <AuthLink text="Login" type="login" href="/login" />
@@ -87,7 +87,7 @@ function Header() {
             <RiShoppingCart2Line className="text-gray-600" size={28} />
           </li>
           {isLoggedIn ? (
-            <AuthLink text="Dashboard" href="/dashboard" />
+            <AuthLink text="Dashboard" href="/dashboard" type="dashboard" />
           ) : (
             <>
               <AuthLink text="Login" type="login" href="/login" />
