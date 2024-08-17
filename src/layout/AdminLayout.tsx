@@ -13,20 +13,20 @@ function AdminLayout() {
   };
 
   return (
-    <div className="flex h-screen bg-gray-100 text-gray-800">
+    <div className="flex h-screen bg-backgroundGray text-gray-800">
       <aside
-        className={`fixed top-0 left-0 z-20 h-full bg-orange text-white transition-transform duration-300 ${
-          isSidebarOpen ? "translate-x-0 " : "-translate-x-full"
+        className={`fixed top-0 left-0 z-20 h-full bg-darkGray text-softWhite transition-transform duration-300 ${
+          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         } w-64 lg:translate-x-0 lg:w-64 shadow-lg`}
       >
-        <div className="p-4 text-center border-b border-orange-500 relative">
+        <div className="p-4 text-center border-b border-primary relative">
           <h1 className="text-2xl font-semibold">Admin Panel</h1>
           <button
             className="lg:hidden absolute top-4 right-4"
             onClick={toggleSidebar}
           >
             <svg
-              className="w-6 h-6 text-white"
+              className="w-6 h-6 text-softWhite"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -46,16 +46,28 @@ function AdminLayout() {
           </button>
         </div>
         <nav className="mt-4">
-          <Link to="/admin/manage-users" className="flex items-center p-4">
+          <Link
+            to="/admin/manage-users"
+            className="flex items-center p-4 hover:bg-darkBlue hover:text-softWhite transition-colors"
+          >
             <FaUsers className="mr-2 text-lg" /> Manage Users
           </Link>
-          <Link to="/admin/manage-courses" className="flex items-center p-4">
+          <Link
+            to="/admin/manage-courses"
+            className="flex items-center p-4 hover:bg-darkBlue hover:text-softWhite transition-colors"
+          >
             <FaBook className="mr-2 text-lg" /> Manage Courses
           </Link>
-          <Link to="/admin/reports" className="flex items-center p-4">
+          <Link
+            to="/admin/reports"
+            className="flex items-center p-4 hover:bg-darkBlue hover:text-softWhite transition-colors"
+          >
             <MdReport className="mr-2 text-lg" /> Reports
           </Link>
-          <Link to="/admin/teacher-requests" className="flex items-center p-4">
+          <Link
+            to="/admin/teacher-requests"
+            className="flex items-center p-4 hover:bg-darkBlue hover:text-softWhite transition-colors"
+          >
             <PiChalkboardTeacherFill className="mr-2 text-lg" /> Teacher
             Requests
           </Link>
@@ -91,7 +103,7 @@ function AdminLayout() {
             </div>
           </div>
         </header>
-        <main className="flex-1 p-6 bg-gray-100">
+        <main className="flex-1 p-6 bg-backgroundGray">
           <Outlet />
         </main>
       </div>
