@@ -25,7 +25,7 @@ function CourseInstructor({
 
   return (
     <div className="p-6 rounded-lg shadow-xl">
-      <h2 className="text-2xl font-bold mb-6 text-gray2">Instructor</h2>
+      <h2 className="text-2xl font-bold mb-6 text-darkGray">Instructor</h2>
       <div className="flex flex-col lg:flex-row items-start lg:items-center">
         <div className="flex items-center gap-4 mb-4 lg:mb-0">
           <Link to={`/user/${instructor.id}`} className="shrink-0">
@@ -44,10 +44,12 @@ function CourseInstructor({
                 {instructor.name}
               </Link>
             </div>
-            <div className="text-md text-gray-600">{instructor.job_title}</div>
+            <div className="text-md text-mediumGray mt-2">
+              {instructor.job_title}
+            </div>
           </div>
         </div>
-        <ul className="text-sm text-gray-600 space-y-2 lg:ml-auto flex flex-col items-start lg:items-end lg:flex-1">
+        <ul className="text-sm text-textGray space-y-2 lg:ml-auto flex flex-col items-start lg:items-end lg:flex-1">
           <li className="flex items-center gap-2">
             <FaStar size={17} className="text-yellow-500" />
             <span>{instructor.rating} Rating</span>
@@ -66,9 +68,9 @@ function CourseInstructor({
           </li>
         </ul>
       </div>
-      <div className="mt-6 text-sm text-gray3">
+      <div className="mt-6 text-sm text-textGray">
         <p className="line-clamp-6 lg:line-clamp-none">{instructor.bio}</p>
-        <button className="mt-4 px-4 py-2 bg-orange text-white rounded-md hover:bg-orangePeel transition-all duration-300">
+        <button className="mt-4 px-4 py-2 bg-deepBlue text-white rounded-md  transition-all duration-300">
           View Profile
         </button>
       </div>
