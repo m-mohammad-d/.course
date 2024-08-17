@@ -18,7 +18,7 @@ function SignupPage() {
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="bg-white p-8 rounded-xl shadow-xl w-96">
-        <h2 className="text-2xl font-bold mb-6 text-center text-gray1">
+        <h2 className="text-2xl font-bold mb-6 text-center text-darkGray">
           Sign up and start learning
         </h2>
         <form onSubmit={handleSubmit}>
@@ -56,13 +56,13 @@ function SignupPage() {
           </div>
           <div className="mb-6">
             <label
-              className="block text-gray-700 text-sm font-bold mb-2"
+              className="block text-darkGray text-sm font-bold mb-2"
               htmlFor="password"
             >
               Password
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-textGray mb-3 leading-tight focus:outline-none focus:shadow-outline"
               id="password"
               type="password"
               placeholder="Password"
@@ -72,7 +72,7 @@ function SignupPage() {
           </div>
           <div className="flex items-center justify-between">
             <button
-              className="bg-orange hover:bg-hoverOrange text-white font-bold w-full py-3 rounded-lg shadow-lg focus:outline-none focus:shadow-outline"
+              className="bg-primary hover:bg-darkOrange text-white font-bold w-full py-3 rounded-lg shadow-lg focus:outline-none focus:shadow-outline"
               type="submit"
               disabled={isPending}
             >
@@ -81,7 +81,7 @@ function SignupPage() {
           </div>
         </form>
         <div className="mt-4">
-          <p className="text-center text-gray-600">Other sign up options</p>
+          <p className="text-center text-textGray">Other sign up options</p>
           <div className="flex justify-center space-x-4 mt-2">
             <button className="bg-gray-100 p-2 rounded-full">
               <img
@@ -109,7 +109,7 @@ function SignupPage() {
         <div className="mt-6 text-center">
           <p className="text-gray-600">
             Have an account?{" "}
-            <Link to="/login" className="text-orange hover:text-hoverOrange">
+            <Link to="/login" className="text-primary hover:text-darkOrange">
               Login
             </Link>
           </p>
