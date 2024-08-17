@@ -33,9 +33,9 @@ const TestimonialsData = [
 
 function Testimonials() {
   return (
-    <div className="bg-white py-10">
+    <div className="bg-softWhite py-10">
       <div className="mx-4 sm:mx-8 lg:mx-16 max-w-screen-lg">
-        <h2 className="text-lg sm:text-xl lg:text-2xl text-gray1 mb-6 sm:mb-8">
+        <h2 className="text-lg sm:text-xl lg:text-2xl text-darkGray mb-6 sm:mb-8">
           See what others are achieving through learning
         </h2>
         <div className="flex flex-wrap gap-4 sm:gap-6 lg:gap-8">

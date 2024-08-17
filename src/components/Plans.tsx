@@ -55,7 +55,7 @@ function Plans() {
   return (
     <div className="my-16">
       <div className="w-full md:w-5/6 mx-auto">
-        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-8">
+        <h2 className="text-2xl md:text-3xl font-bold text-darkGray mb-8">
           Accelerate growth — for you or your organization
         </h2>
         <div className="flex flex-col md:flex-row flex-wrap justify-between gap-8">

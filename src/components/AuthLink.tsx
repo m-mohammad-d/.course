@@ -3,24 +3,36 @@ import { Link } from "react-router-dom";
 interface AuthLinkProps {
   text: string;
   href: string;
-  type: "login" | "signup" | "dashboard"
+  type: "login" | "signup" | "dashboard";
 }
 
 function AuthLink({ text, href, type }: AuthLinkProps) {
   const backgroundColor =
-    type === "signup" ? "bg-gray1" : type === "dashboard" ? "bg-orange" : "bg-white";
+    type === "signup"
+      ? "bg-darkGray" 
+      : type === "dashboard"
+      ? "bg-primary" 
+      : "bg-softWhite"; 
   const textColor =
-    type === "signup" ? "text-white" : type === "dashboard" ? "text-white" : "text-gray1";
+    type === "signup"
+      ? "text-softWhite" 
+      : type === "dashboard"
+      ? "text-softWhite" 
+      : "text-mediumGray"; 
+  const borderColor =
+    type === "signup"
+      ? "border-darkGray" 
+      : type === "dashboard"
+      ? "border-primary" 
+      : "border-backgroundGray";
 
   return (
-    <div>
-      <Link
-        to={href}
-        className={`${backgroundColor} ${textColor} px-4 py-3 border border-gray-300 transition duration-300 ease-in-out`}
-      >
-        <span>{text}</span>
-      </Link>
-    </div>
+    <Link
+      to={href}
+      className={`${backgroundColor} ${textColor} ${borderColor} px-4 py-3 border rounded-md transition duration-300 ease-in-out hover:bg-darkOrange hover:text-softWhite`}
+    >
+      {text}
+    </Link>
   );
 }
 

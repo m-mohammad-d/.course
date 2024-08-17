@@ -1,4 +1,3 @@
-
 import CourseCards from "./CourseCards";
 import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -53,16 +52,21 @@ const recommendedCourses = [
 
 const CourseRecommendations = () => {
   return (
-    <div className="max-w-7xl mx-auto py-12 ">
-      <h2 className="text-2xl font-bold mb-6 text-gray2">What to learn next</h2>
+    <div className="max-w-7xl mx-auto py-12">
+      <h2 className="text-2xl font-bold mb-6 text-darkGray">
+        What to learn next
+      </h2>
 
       <div>
-        <div className="flex justify-between">
-          <h3 className="text-lg font-semibold mb-8 text-gray3">
+        <div className="flex justify-between items-center mb-8">
+          <h3 className="text-lg font-semibold text-mediumGray">
             Recommended for you
           </h3>
-          <Link to="/courses" className="flex items-center gap-4">
-            <p>see all course</p>
+          <Link
+            to="/courses"
+            className="flex items-center gap-4 text-primary hover:text-darkOrange transition duration-300 ease-in-out"
+          >
+            <p>See all courses</p>
             <FaArrowRight />
           </Link>
         </div>

@@ -4,13 +4,25 @@ export default {
   theme: {
     extend: {
       colors: {
-        orange: "#FF9800",
-        hoverOrange: "#FB8C00",
-        orangePeel: "#ffa202",
-        gray1: "#2D2F31",
-        gray2: "#2E3235",
-        gray3: "#666666",
-        lightGray: "#F7F9FA",
+        // Primary colors
+        primary: "#FF9800", // Main orange
+        darkOrange: "#FB8C00", // Hover orange
+        orangePeel: "#FFA202", // Accent orange
+
+        // Secondary colors
+        darkBlue: "#2D3A4A", // Dark blue
+        teal: "#00796B", // Teal
+
+        // Neutral grays
+        darkGray: "#2D2F31", // Dark gray for backgrounds or containers
+        mediumGray: "#3C4B57", // Medium gray for text and icons
+        textGray: "#666666", // Light gray for text
+        backgroundGray: "#F7F9FA", // Light gray for backgrounds
+
+        // Accent colors
+        accentYellow: "#FFC107", // Accent yellow
+        deepBlue: "#0D47A1", // Deep blue for links/buttons
+        softWhite: "#FAFAFA", // Soft white background
       },
     },
   },

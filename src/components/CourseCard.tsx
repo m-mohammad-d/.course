@@ -28,7 +28,7 @@ function CourseCard({
   instructors,
 }: CourseCardProps) {
   return (
-    <div className="flex border rounded-lg shadow-xl p-6 bg-white">
+    <div className="flex border rounded-lg shadow-xl p-6 bg-softWhite">
       <div className="flex-shrink-0">
         <img
           src={image}
@@ -40,23 +40,25 @@ function CourseCard({
       <div className="flex flex-col justify-between flex-grow ml-4">
         <div>
           <Link to={`/course/${id}`}>
-            <h2 className="text-2xl font-bold">{name}</h2>
+            <h2 className="text-2xl font-bold text-darkGray hover:text-primary transition duration-300 ease-in-out">
+              {name}
+            </h2>
           </Link>
-          <p className="text-gray-700 mt-2">{title}</p>
-          <p className="text-sm text-gray-500 mt-7">
+          <p className="text-textGray mt-2">{title}</p>
+          <p className="text-sm text-mediumGray mt-7">
             By {instructors?.name || "Unknown"}
           </p>
         </div>
-        <div className="flex items-center mt-4 text-sm">
-          <span className="text-yellow-500 font-semibold">{rating} ⭐</span>
-          <span className="text-gray-500 ml-2">({comments?.length})</span>
-          <span className="text-gray-500 ml-2">
+        <div className="flex items-center mt-4 text-sm text-mediumGray">
+          <span className="text-accentYellow font-semibold">{rating} ⭐</span>
+          <span className="ml-2">({comments?.length})</span>
+          <span className="ml-2">
             • {coursetime} hours • {lectures} lectures
           </span>
         </div>
       </div>
 
-      <div className="flex flex-col justify-between items-end text-xl font-bold text-orange ml-4">
+      <div className="flex flex-col justify-between items-end text-xl font-bold text-primary">
         <span>€{price}</span>
       </div>
     </div>

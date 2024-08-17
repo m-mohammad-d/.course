@@ -28,16 +28,16 @@ const features = [
 
 function Features() {
   return (
-    <div className="flex flex-col md:flex-row justify-center bg-white px-4 md:px-8 py-8">
+    <div className="flex flex-col md:flex-row justify-center bg-softWhite px-4 md:px-8 py-8">
       <div className="flex-1 flex flex-col gap-8 md:gap-12">
         {features.map((feature, index) => (
           <FeatureCard key={index} {...feature} />
         ))}
       </div>
       <div className="flex justify-center items-center mt-8 md:mt-0 md:pl-12 flex-shrink-0">
-        <img 
-          src={illustration} 
-          alt="Learning illustration" 
+        <img
+          src={illustration}
+          alt="Learning illustration"
           className="w-full max-w-sm md:max-w-md lg:max-w-lg"
         />
       </div>
