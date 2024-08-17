@@ -7,6 +7,8 @@ import Spinner from "./Spinner";
 const CourseRecommendations = () => {
   const { data, isLoading } = useGetCourses();
   const recommendedCourses = data?.splice(1, 5);
+
+
   if (isLoading) return <Spinner />;
   return (
     <div className="max-w-7xl mx-auto py-12 h-full">

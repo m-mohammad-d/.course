@@ -1,6 +1,8 @@
 interface CourseCardType {
   title: string;
-  instructor: string;
+  instructors: {
+    name: string;
+  };
   rating: number;
   reviews: number;
   price: string;
@@ -25,7 +27,9 @@ function CourseCards({ course }: CourseCardProps) {
         <h3 className="text-md font-semibold mb-2 text-darkGray">
           {course.title}
         </h3>
-        <p className="text-mediumGray text-sm mb-1">{course.instructor}</p>
+        <p className="text-mediumGray text-sm mb-1">
+          {course.instructors.name}
+        </p>
         <div className="flex items-center mb-1">
           <span className="text-accentYellow text-sm font-bold">
             {course.rating}
