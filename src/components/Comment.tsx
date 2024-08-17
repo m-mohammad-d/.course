@@ -1,4 +1,4 @@
-import React from "react";
+
 import { BiUserCircle } from "react-icons/bi";
 import { FaEllipsisH, FaThumbsDown, FaThumbsUp } from "react-icons/fa";
 
@@ -13,20 +13,20 @@ function Comment({ commentName, commentText, rating }: CommentProps) {
     <div className="p-4 bg-white rounded-lg shadow-md">
       <div className="flex justify-between items-start">
         <div className="flex items-center gap-4">
-          <div className="w-12 h-12 rounded-full bg-gray-300 flex items-center justify-center text-white text-2xl">
+          <div className="w-12 h-12 rounded-full bg-textGray flex items-center justify-center text-white text-2xl">
             <BiUserCircle />
           </div>
           <div className="flex flex-col">
-            <p className="text-lg font-semibold text-gray-800">{commentName}</p>
+            <p className="text-lg font-semibold text-darkGray mb-1">{commentName}</p>
             <p className="text-xs text-gray-500">Rating: {rating}</p>
           </div>
         </div>
-        <button className="text-gray-500 hover:text-gray-700">
+        <button className="text-mediumGray hover:text-gray-700">
           <FaEllipsisH size={20} />
         </button>
       </div>
 
-      <div className="mt-4 text-gray-700 text-sm">
+      <div className="mt-4 text-textGray text-sm">
         <p>{commentText}</p>
       </div>
 

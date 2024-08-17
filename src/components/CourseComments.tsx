@@ -23,8 +23,8 @@ function CourseComments({ courseRating, comments }: CourseCommentsProps) {
 
   return (
     <div className="mt-6">
-      <div className="text-2xl text-gray-800 flex gap-2 items-center">
-        <FaStar className="text-orange-400" />
+      <div className="text-2xl text-mediumGray flex gap-2 items-center">
+        <FaStar className="text-orangePeel" />
         <h2 className="font-bold">
           {courseRating} Course Rating - {comments?.length} Ratings
         </h2>
