@@ -10,3 +10,14 @@ export async function getAllUser() {
 
   return users;
 }
+
+export async function deleteUser(id: string) {
+  const { data, error } = await supabase.auth.admin.deleteUser(id);
+
+  if (error) {
+    console.error("Error fetching courses:", error.message);
+    throw new Error(error.message);
+  }
+
+  return data;
+}
