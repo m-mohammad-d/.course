@@ -14,17 +14,19 @@ function InstructorProfile() {
         <img
           className="w-52 h-52 object-cover rounded-full"
           src={data.image_url}
-          alt="Mosh Hamedani"
+          alt={id}
           loading="lazy"
         />
       </div>
 
       <div className="flex-1">
-        <div className="text-lg font-semibold text-gray-800 mb-2">
+        <div className="text-lg font-semibold text-darkGray mb-2">
           Instructor
         </div>
-        <h1 className="text-4xl font-serif font-bold mb-2">{data?.name}</h1>
-        <h2 className="text-xl font-medium text-gray-600 mb-6">
+        <h1 className="text-4xl font-serif font-bold text-mediumGray mb-2">
+          {data?.name}
+        </h1>
+        <h2 className="text-xl font-medium text-textGray mb-6">
           {data["job_title"]}
         </h2>
 
@@ -45,7 +47,7 @@ function InstructorProfile() {
 
         <h2 className="text-lg font-semibold text-gray-800 mb-4">About me</h2>
         <div className="max-h-80 overflow-hidden">
-          <p className="text-gray-700">{data.bio}</p>
+          <p className="text-textGray">{data.bio}</p>
         </div>
       </div>
     </div>
