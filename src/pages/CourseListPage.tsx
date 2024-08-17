@@ -31,13 +31,13 @@ function CourseListPage() {
   return (
     <div className="container mx-auto p-6">
       <div>
-        <h2 className="text-gray1 font-bold text-2xl">
+        <h2 className="text-darkBlue font-bold text-2xl">
           {sortedCourses.length} results for courses
         </h2>
       </div>
       <div className="flex justify-between items-center my-6">
         <select
-          className="p-2 border rounded-md bg-lightGray text-gray3"
+          className="p-2 border rounded-md bg-lightGray text-darkGray"
           value={sortOption}
           onChange={(e) => setSortOption(e.target.value)}
         >
@@ -47,7 +47,7 @@ function CourseListPage() {
           <option value="students">Number of Students</option>
           <option value="price">Price</option>
         </select>
-        <p>{sortedCourses.length} results</p>
+        <p className="text-darkGray">{sortedCourses.length} results</p>
       </div>
 
       <div className="grid grid-cols-1 gap-6">
