@@ -64,13 +64,13 @@ function LoginPage() {
           </div>
           <div className="flex items-center justify-between">
             <button
-              className="bg-orange hover:bg-hoverOrange text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline"
+              className="bg-primary hover:bg-darkOrange text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline"
               type="submit"
             >
               Log in
             </button>
             <a
-              className="inline-block align-baseline font-bold text-sm text-orange hover:text-hoverOrange"
+              className="inline-block align-baseline font-bold text-sm text-primary hover:text-darkOrange"
               href="#"
             >
               Forgot Password?
@@ -106,12 +106,12 @@ function LoginPage() {
         <div className="mt-6 text-center">
           <p className="text-gray-600">
             Don't have an account?{" "}
-            <Link to="/signup" className="text-orange hover:text-hoverOrange">
+            <Link to="/signup" className="text-primary hover:text-darkOrange">
               Sign up
             </Link>
           </p>
           <p className="text-gray-600">
-            <a href="#" className="text-orange hover:text-hoverOrange">
+            <a href="#" className="text-primary hover:text-darkOrange">
               Log in with your organization
             </a>
           </p>
