@@ -17,7 +17,12 @@ function ManageUsersPage() {
         <div className="space-y-6">
           {data.users ? (
             data.users.map((user) => (
-              <User key={user.id} userEmail={user.user_metadata.email} username={user.user_metadata["full_name"]} />
+              <User
+                key={user.id}
+                userEmail={user.user_metadata.email}
+                username={user.user_metadata["full_name"]}
+                id={user.id}
+              />
             ))
           ) : (
             <p className="text-gray-600 text-lg">No users found.</p>
