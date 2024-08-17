@@ -4,9 +4,11 @@ import { PiChalkboardTeacherFill } from "react-icons/pi";
 import { Link, Outlet } from "react-router-dom";
 import { useState } from "react";
 import { FiMenu } from "react-icons/fi"; // Import the hamburger menu icon
+import { useLogout } from "../hooks/useLogout";
 
 function AdminLayout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const { logout } = useLogout();
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -90,7 +92,10 @@ function AdminLayout() {
             <h1 className="text-xl font-semibold">Admin Panel</h1>
           </div>
           <div className="flex items-center space-x-4">
-            <button className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded">
+            <button
+              className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded"
+              onClick={() => logout()}
+            >
               Logout
             </button>
             <div className="flex items-center">
