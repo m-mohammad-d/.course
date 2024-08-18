@@ -22,6 +22,7 @@ import ManageUsersPage from "./pages/ManageUsersPage";
 import AdminLayout from "./layout/AdminLayout";
 import SendFeedbackPage from "./pages/SendFeedbackPage";
 import FeedbackManagement from "./pages/FeedbackManagement";
+import TeacherRequestPage from "./pages/TeacherRequestPage";
 
 const router = createBrowserRouter([
   {
@@ -78,6 +79,10 @@ const router = createBrowserRouter([
           {
             path: "/user/feedback",
             element: <SendFeedbackPage />,
+          },
+          {
+            path: "/user/TeacherRequest",
+            element: <TeacherRequestPage />,
           },
         ],
       },

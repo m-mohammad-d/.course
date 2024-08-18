@@ -5,7 +5,7 @@ const items = [
   { name: "Password", path: "/user/edit-password" },
   { name: "Photo", path: "/user/photo" },
   { name: "feedBack", path: "/user/feedBack" },
-  { name: "Payment methods", path: "/user/payment-methods" },
+  { name: "teacher request", path: "/user/TeacherRequest" },
   { name: "Privacy", path: "/user/privacy" },
   { name: "Notifications", path: "/user/notifications" },
   { name: "API clients", path: "/user/api-clients" },
