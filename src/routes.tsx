@@ -17,11 +17,11 @@ import InstructorPage from "./pages/InstructorPage";
 import TeacherCourses from "./pages/TeacherCourses";
 import AddCourse from "./pages/AddCourse";
 import TeacherRequestsPage from "./pages/TeacherRequestsPage";
-import AdminReportsPage from "./pages/AdminReportsPage";
 import ManageCoursesPage from "./pages/ManageCoursesPage";
 import ManageUsersPage from "./pages/ManageUsersPage";
 import AdminLayout from "./layout/AdminLayout";
 import SendFeedbackPage from "./pages/SendFeedbackPage";
+import FeedbackManagement from "./pages/FeedbackManagement";
 
 const router = createBrowserRouter([
   {
@@ -115,7 +115,7 @@ const router = createBrowserRouter([
           },
           {
             path: "/admin/reports",
-            element: <AdminReportsPage />,
+            element: <FeedbackManagement />,
           },
           {
             path: "/admin/teacher-requests",
