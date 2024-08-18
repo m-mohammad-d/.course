@@ -16,13 +16,13 @@ import CourseListPage from "./pages/CourseListPage";
 import InstructorPage from "./pages/InstructorPage";
 import TeacherCourses from "./pages/TeacherCourses";
 import AddCourse from "./pages/AddCourse";
-import TeacherRequestsPage from "./pages/TeacherRequestsPage";
 import ManageCoursesPage from "./pages/ManageCoursesPage";
 import ManageUsersPage from "./pages/ManageUsersPage";
 import AdminLayout from "./layout/AdminLayout";
 import SendFeedbackPage from "./pages/SendFeedbackPage";
 import FeedbackManagement from "./pages/FeedbackManagement";
 import TeacherRequestPage from "./pages/TeacherRequestPage";
+import TeacherRequestListPage from "./pages/TeacherRequestListPage";
 
 const router = createBrowserRouter([
   {
@@ -124,7 +124,7 @@ const router = createBrowserRouter([
           },
           {
             path: "/admin/teacher-requests",
-            element: <TeacherRequestsPage />,
+            element: <TeacherRequestListPage />,
           },
         ],
       },

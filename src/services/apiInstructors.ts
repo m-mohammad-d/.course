@@ -4,6 +4,7 @@ export interface InstructorType {
   bio: string;
   job_title: string;
   image_url: string;
+  user_id: string;
 }
 
 export async function getInstructorById(instructorId: string | undefined) {
@@ -23,14 +24,55 @@ export async function getInstructorById(instructorId: string | undefined) {
   return instructor;
 }
 
-export async function addInstructorRequest(teacher : InstructorType) {
-  const { data, error } = await supabase
-    .from("instructors")
-    .insert([{name : teacher.name , image_url : teacher["image_url"] , bio : teacher.bio , "job_title" : teacher.job_title  ,  isConfirm: false }]);
+export async function addInstructorRequest(teacher: InstructorType) {
+  const { data, error } = await supabase.from("instructors").insert([
+    {
+      name: teacher.name,
+      image_url: teacher["image_url"],
+      bio: teacher.bio,
+      job_title: teacher.job_title,
+      user_id: teacher.user_id,
+      isConfirm: false,
+    },
+  ]);
 
   if (error) {
     throw new Error(error.message);
   }
 
   return data;
+}
+
+export async function getTeacherRequests() {
+  const { data, error } = await supabase
+    .from("instructors")
+    .select("*")
+    .eq("isConfirm", false);
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return data;
+}
+
+export async function confirmTeacherRequest(id: string) {
+  const { data, error } = await supabase
+    .from("instructors")
+    .update({ isConfirm: true })
+    .eq("id", id);
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return data;
+}
+
+export async function rejectTeacherRequest(id: string) {
+  const { error } = await supabase.from("instructors").delete().eq("id", id);
+
+  if (error) {
+    throw new Error(error.message);
+  }
 }

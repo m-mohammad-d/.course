@@ -1,7 +1,7 @@
 import { useState } from "react";
-
 import toast from "react-hot-toast";
 import useAddTeacherRequest from "../hooks/useAddTeacherRequest";
+import supabase from "../services/supabase";
 
 function RequestInstructorsForm() {
   const [name, setName] = useState("");
@@ -11,8 +11,27 @@ function RequestInstructorsForm() {
 
   const { mutate } = useAddTeacherRequest();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+
+    const {
+      data: { user },
+      error,
+    } = await supabase.auth.getUser();
+
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
+
+    const userId = user?.id;
+    
+
+    if (!userId) {
+      toast.error("User not logged in.");
+      return;
+    }
 
     mutate(
       {
@@ -20,6 +39,7 @@ function RequestInstructorsForm() {
         bio,
         job_title: jobTitle,
         image_url: imageLink,
+        user_id: userId,
       },
       {
         onSuccess: () => {
@@ -34,7 +54,6 @@ function RequestInstructorsForm() {
       }
     );
   };
-
   return (
     <div className="w-full mx-auto p-4 bg-white border border-gray-300 rounded-lg shadow-md">
       <h2 className="text-xl font-bold mb-4">Request to Become a Teacher</h2>

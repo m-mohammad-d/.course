@@ -21,3 +21,16 @@ export async function deleteUser(id: string) {
 
   return data;
 }
+export async function updateUserRole(id: string) {
+  console.log(id);
+
+  const { data, error } = await supabase.auth.admin.updateUserById(id, {
+    user_metadata: { role: "teacher" },
+  });
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return data;
+}
