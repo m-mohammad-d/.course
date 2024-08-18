@@ -1,5 +1,7 @@
 import { useState } from "react";
+import useDeleteFeedback from "../hooks/useDeleteFeedback";
 interface Feedback {
+  id: number;
   name: string;
   description: string;
 }
@@ -10,6 +12,10 @@ interface FeedbackCardProps {
 
 function FeadBackCard({ feedback }: FeedbackCardProps) {
   const [showFullText, setShowFullText] = useState(false);
+  const { mutate } = useDeleteFeedback();
+  function handlerDeleteFeedback() {
+    mutate(feedback.id);
+  }
 
   return (
     <div className="bg-softWhite border border-mediumGray rounded-lg p-4 mb-4 shadow-md w-full">
@@ -30,6 +36,7 @@ function FeadBackCard({ feedback }: FeedbackCardProps) {
         </button>
         <button
           className="bg-red-600 text-softWhite px-4 py-2 rounded hover:bg-red-700 transition-colors"
+          onClick={handlerDeleteFeedback}
         >
           Delete
         </button>

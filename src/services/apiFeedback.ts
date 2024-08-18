@@ -18,3 +18,9 @@ export async function getAllFeedback() {
   if (error) throw new Error(error.message);
   return feedBack;
 }
+
+export async function deleteFeedback(id: number) {
+  const { error } = await supabase.from("feedBack").delete().eq("id", id);
+
+  if (error) throw new Error(error.message);
+}
