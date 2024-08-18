@@ -21,6 +21,7 @@ import AdminReportsPage from "./pages/AdminReportsPage";
 import ManageCoursesPage from "./pages/ManageCoursesPage";
 import ManageUsersPage from "./pages/ManageUsersPage";
 import AdminLayout from "./layout/AdminLayout";
+import SendFeedbackPage from "./pages/SendFeedbackPage";
 
 const router = createBrowserRouter([
   {
@@ -73,6 +74,10 @@ const router = createBrowserRouter([
           {
             path: "/user/edit-password",
             element: <EditPasswordPage />,
+          },
+          {
+            path: "/user/feedback",
+            element: <SendFeedbackPage />,
           },
         ],
       },
