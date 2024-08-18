@@ -75,7 +75,7 @@ function EditPasswordForm({ email }: EmailType) {
         </div>
         <button
           type="submit"
-          className="w-full py-2 px-4 mt-8 bg-orange text-white rounded-md"
+          className="w-full py-2 px-4 mt-8 bg-primary text-white rounded-md"
           disabled={isLoading}
         >
           {isLoading ? "Updating..." : "Update Password"}

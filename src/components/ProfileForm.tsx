@@ -16,7 +16,6 @@ interface ProfileFormProps {
   initialData: FormState;
 }
 
-
 function ProfileForm({ initialData }: ProfileFormProps) {
   const { handleUpdateProfile, error, isLoading } = useUpdateProfile();
   const [formState, setFormState] = useState<FormState>(initialData);
@@ -183,7 +182,7 @@ function ProfileForm({ initialData }: ProfileFormProps) {
 
       <button
         type="submit"
-        className="w-full py-2 px-4 bg-orange text-white rounded-md"
+        className="w-full py-2 px-4 bg-primary  text-white rounded-md"
         disabled={isLoading}
       >
         {isLoading ? "Saving..." : "Save"}
