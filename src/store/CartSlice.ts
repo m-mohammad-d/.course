@@ -5,7 +5,8 @@ interface Course {
   id: string;
   name: string;
   price: number;
-  img: string; 
+  img: string;
+  instructor : string
 }
 
 export interface CartState {
@@ -21,6 +22,7 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addItem: (state, action: PayloadAction<Course>) => {
+      console.log(initialState);
 
       state.items.push(action.payload);
       setItemLocal("cart", state.items);

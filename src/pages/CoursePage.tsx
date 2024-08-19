@@ -21,6 +21,7 @@ function CoursePage() {
   return (
     <div>
       <CourseHeader
+        id={courseData.id}
         courseName={courseData?.name}
         coursetitle={courseData?.title}
         courseRating={courseData?.rating}

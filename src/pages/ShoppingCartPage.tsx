@@ -2,17 +2,41 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState, AppDispatch } from "../store";
 import { removeItem, clearCart } from "../store/CartSlice";
 import CartItemCard from "../components/CartItemCard";
+import { useCheckout } from "../hooks/useCheckout";
+import toast from "react-hot-toast";
 
 function ShoppingCartPage() {
   const dispatch = useDispatch<AppDispatch>();
   const cartItems = useSelector((state: RootState) => state.cart.items);
+  const { mutate: checkout, isLoading, isError } = useCheckout();
 
-  const handleRemoveFromCart = (id: string) => {
-    dispatch(removeItem(id));
-  };
+  const handleRemoveFromCart = (id: string) => dispatch(removeItem(id));
 
-  const getTotalPrice = () => {
-    return cartItems.reduce((total, item) => total + item.price, 0);
+  const getTotalPrice = () =>
+    cartItems.reduce((total, item) => total + item.price, 0);
+
+  const handleCheckout = () => {
+    cartItems.forEach((item) => {
+      checkout(
+        {
+          courseId: item.id,
+          courseImage: item.img,
+          courseName: item.name,
+          instructorName: item.instructor,
+        },
+        {
+          onSuccess: () => {
+            toast.success("Checkout successful!");
+            dispatch(clearCart());
+          },
+          onError: (error: Error) => {
+            console.log(error);
+            
+            toast.error(`Checkout failed: ${error.message}`);
+          },
+        }
+      );
+    });
   };
 
   return (
@@ -31,14 +55,26 @@ function ShoppingCartPage() {
           ))}
           <div className="flex justify-between font-bold mt-4">
             <span>Total:</span>
-            <span>${getTotalPrice()}</span>
+            <span>${getTotalPrice().toFixed(2)}</span>
           </div>
-          <button
-            onClick={() => dispatch(clearCart())}
-            className="mt-4 bg-red-500 text-white py-2 px-4 rounded"
-          >
-            Clear Cart
-          </button>
+          <div className="flex justify-between mt-4">
+            <button
+              onClick={() => dispatch(clearCart())}
+              className="bg-red-500 text-white py-2 px-4 rounded"
+            >
+              Clear Cart
+            </button>
+            <button
+              onClick={handleCheckout}
+              disabled={isLoading}
+              className="bg-blue-500 text-white py-2 px-4 rounded"
+            >
+              {isLoading ? "Processing..." : "Checkout"}
+            </button>
+          </div>
+          {isError && (
+            <p className="text-red-500 mt-2">Error: {isError}</p>
+          )}
         </div>
       )}
     </div>

@@ -27,14 +27,15 @@ function CourseHeader({
   id,
 }: CourseHeaderProps) {
   const dispatch = useDispatch();
+  console.log(id);
 
   const handleAddToCart = () => {
-   
     const course = {
       id,
       name: courseName,
       price,
       img,
+      instructor,
     };
     dispatch(addItem(course));
   };
