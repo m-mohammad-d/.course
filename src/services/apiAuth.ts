@@ -46,6 +46,7 @@ export async function signup({ email, password, full_name }: signUpType) {
         linkedin: "",
         youtube: "",
         roles: "user",
+        purchased_courses: [],
       },
     },
   });
@@ -83,10 +84,8 @@ export async function getUserProfile() {
     youtube: user.user_metadata.youtube,
   };
 
-
   return userProfile;
 }
-
 
 export async function updateProfile(profileData: UpdateProfileType) {
   const {

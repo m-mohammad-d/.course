@@ -5,7 +5,7 @@ interface Course {
   id: string;
   name: string;
   price: number;
-  img: string; // فیلد عکس دوره
+  img: string; 
 }
 
 export interface CartState {
