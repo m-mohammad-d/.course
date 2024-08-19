@@ -30,11 +30,9 @@ function Header() {
         </Link>
       </div>
 
-
       <div className="hidden md:flex flex-1 mx-2 md:mx-4 lg:mx-8">
         <SearchBar />
       </div>
-
 
       <div className="md:hidden ml-auto">
         <button
@@ -57,9 +55,10 @@ function Header() {
         </li>
       </ul>
 
-
       <div className="hidden md:flex items-center space-x-4">
-        <RiShoppingCart2Line className="text-mediumGray" size={28} />
+        <Link to="/cart">
+          <RiShoppingCart2Line className="text-mediumGray" size={28} />
+        </Link>
         {userRole ? (
           <AuthLink text="Dashboard" href={dashboardLink} type="dashboard" />
         ) : (
@@ -92,7 +91,9 @@ function Header() {
             <Link to="/teach">Teach on Udemy</Link>
           </li>
           <li className="flex items-center space-x-2">
-            <RiShoppingCart2Line className="text-mediumGray" size={28} />
+            <Link to="/cart">
+              <RiShoppingCart2Line className="text-mediumGray" size={28} />
+            </Link>
           </li>
           {userRole ? (
             <AuthLink text="Dashboard" href={dashboardLink} type="dashboard" />

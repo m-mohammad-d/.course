@@ -1,7 +1,6 @@
 import { RouterProvider } from "react-router-dom";
 import router from "./routes.tsx";
 import { Toaster } from "react-hot-toast";
-
 function App() {
   return (
     <div>

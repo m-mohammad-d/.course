@@ -1,7 +1,9 @@
+import { useDispatch } from "react-redux";
 import { IoStarSharp } from "react-icons/io5";
 import { PiStudentFill } from "react-icons/pi";
+import { addItem } from "../store/CartSlice";
 
-interface CourseHeaderType {
+interface CourseHeaderProps {
   courseName: string;
   coursetitle: string;
   courseRating: string;
@@ -10,6 +12,7 @@ interface CourseHeaderType {
   countstudent: number;
   price: number;
   img: string;
+  id: string;
 }
 
 function CourseHeader({
@@ -21,7 +24,21 @@ function CourseHeader({
   countstudent,
   price,
   img,
-}: CourseHeaderType) {
+  id,
+}: CourseHeaderProps) {
+  const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+   
+    const course = {
+      id,
+      name: courseName,
+      price,
+      img,
+    };
+    dispatch(addItem(course));
+  };
+
   return (
     <div className="bg-darkGray text-white py-4">
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4">
@@ -52,14 +69,17 @@ function CourseHeader({
         <div className="text-darkGray bg-white p-6 rounded-lg shadow-lg">
           <img
             src={img}
-            alt="Course"
+            alt={`Image of ${courseName}`}
             className="w-full h-48 object-cover rounded-lg mb-4"
           />
           <div className="mb-4 flex justify-between items-center">
             <p className="text-2xl font-bold">${price}</p>
             <p className="text-sm text-gray-600">30-Day Money-Back Guarantee</p>
           </div>
-          <button className="w-full bg-orangePeel text-white py-2 rounded-md hover:bg-darkOrange transition duration-300">
+          <button
+            onClick={handleAddToCart}
+            className="w-full bg-orangePeel text-white py-2 rounded-md hover:bg-darkOrange transition duration-300"
+          >
             Add to Cart
           </button>
         </div>
