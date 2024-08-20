@@ -58,3 +58,57 @@ export async function getCoursesByInstructor(instructorId: string | undefined) {
 
   return courses;
 }
+
+interface CourseParams {
+  name: string;
+  title: string;
+  price: number;
+  imageUrl: string;
+  sections: number;
+  coursetime: string;
+  requirements: string;
+  lectures: number;
+  instructorId: string;
+}
+
+export async function addCourse(course: CourseParams) {
+  const {
+    name,
+    title,
+    price,
+    imageUrl,
+    sections,
+    coursetime,
+    requirements,
+    lectures,
+    instructorId,
+  } = course;
+
+
+
+  const { data, error } = await supabase
+    .from("courses")
+    .insert([
+      {
+        name,
+        title,
+        price,
+        image: imageUrl,
+        section: sections,
+        coursetime,
+        Requirements: requirements,
+        lectures,
+        instructorId: instructorId,
+        isConfirmed: false,
+      },
+    ])
+    .select();
+
+  if (error) {
+    console.error(error);
+
+    throw new Error(`Failed to add course: ${error.message}`);
+  }
+
+  return data;
+}

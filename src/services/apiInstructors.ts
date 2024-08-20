@@ -76,3 +76,15 @@ export async function rejectTeacherRequest(id: string) {
     throw new Error(error.message);
   }
 }
+export async function getInstructorByUserid(id: string) {
+  const { data, error } = await supabase
+    .from("instructors")
+    .select("*")
+    .eq("user_id", id)
+    .single();
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return data;
+}
