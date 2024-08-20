@@ -124,3 +124,36 @@ export async function getCoursePending() {
 
   return data;
 }
+
+export async function approveCourse(courseId: string) {
+  if (!courseId) throw new Error("Course ID is required");
+
+  const { data, error } = await supabase
+    .from("courses")
+    .update({ isConfirmed: true })
+    .eq("id", courseId)
+    .select();
+
+  if (error) {
+    console.error("Error approving course:", error.message);
+    throw new Error(`Failed to approve course: ${error.message}`);
+  }
+
+  return data;
+}
+export async function rejectCourse(courseId: string) {
+  if (!courseId) throw new Error("Course ID is required");
+
+  const { data, error } = await supabase
+    .from("courses")
+    .delete()
+    .eq("id", courseId)
+    .select();
+
+  if (error) {
+    console.error("Error rejecting course:", error.message);
+    throw new Error(`Failed to reject course: ${error.message}`);
+  }
+
+  return data;
+}

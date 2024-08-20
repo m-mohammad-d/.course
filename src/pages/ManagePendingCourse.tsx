@@ -4,6 +4,7 @@ import useGetPendingCourse from "../hooks/useGetPendingCourse";
 
 function ManagePendingCourse() {
   const { data: courses, isLoading } = useGetPendingCourse();
+
   if (isLoading) return <Spinner />;
   return (
     <div className="p-6 bg-gray-100 min-h-screen">
@@ -12,6 +13,7 @@ function ManagePendingCourse() {
         {courses?.map((course) => (
           <PendingCourseItem
             key={course.id}
+            id={course.id}
             name={course.name}
             title={course.title}
             image={course.image}
