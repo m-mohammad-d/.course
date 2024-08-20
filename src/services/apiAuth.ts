@@ -82,6 +82,7 @@ export async function getUserProfile() {
     facebook: user.user_metadata.facebook,
     linkedin: user.user_metadata.linkedin,
     youtube: user.user_metadata.youtube,
+    purchased_courses: user.user_metadata.purchased_courses,
   };
 
   return userProfile;
