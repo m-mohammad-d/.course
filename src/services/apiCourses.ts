@@ -84,8 +84,6 @@ export async function addCourse(course: CourseParams) {
     instructorId,
   } = course;
 
-
-
   const { data, error } = await supabase
     .from("courses")
     .insert([
@@ -108,6 +106,20 @@ export async function addCourse(course: CourseParams) {
     console.error(error);
 
     throw new Error(`Failed to add course: ${error.message}`);
+  }
+
+  return data;
+}
+
+export async function getCoursePending() {
+  const { data, error } = await supabase
+    .from("courses")
+    .select("*")
+    .eq("isConfirmed", false);
+
+  if (error) {
+    console.error("Error fetching unconfirmed courses:", error);
+    return [];
   }
 
   return data;

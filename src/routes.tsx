@@ -23,6 +23,7 @@ import FeedbackManagement from "./pages/FeedbackManagement";
 import TeacherRequestPage from "./pages/TeacherRequestPage";
 import TeacherRequestListPage from "./pages/TeacherRequestListPage";
 import ShoppingCartPAge from "./pages/ShoppingCartPage";
+import ManagePendingCourse from "./pages/ManagePendingCourse";
 
 const router = createBrowserRouter([
   {
@@ -125,6 +126,10 @@ const router = createBrowserRouter([
           {
             path: "/admin/teacher-requests",
             element: <TeacherRequestListPage />,
+          },
+          {
+            path: "/admin/manage-pending-courses",
+            element: <ManagePendingCourse />,
           },
         ],
       },

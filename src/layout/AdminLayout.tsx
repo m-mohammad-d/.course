@@ -1,4 +1,4 @@
-import { FaUsers, FaBook } from "react-icons/fa";
+import { FaUsers, FaBook, FaTasks } from "react-icons/fa";
 import { MdReport } from "react-icons/md";
 import { PiChalkboardTeacherFill } from "react-icons/pi";
 import { Link, Outlet } from "react-router-dom";
@@ -72,6 +72,13 @@ function AdminLayout() {
           >
             <PiChalkboardTeacherFill className="mr-2 text-lg" /> Teacher
             Requests
+          </Link>
+          <Link
+            to="/admin/manage-pending-courses"
+            className="flex items-center p-4 hover:bg-darkBlue hover:text-softWhite transition-colors"
+          >
+             <FaTasks className="mr-3" />
+            manage pending course
           </Link>
         </nav>
       </aside>
