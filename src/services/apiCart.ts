@@ -15,12 +15,7 @@ interface PurchasedCourse {
   purchased_at: string;
 }
 
-export async function addCourseToPurchaserCourses({
-  courseId,
-  courseName,
-  courseImage,
-  instructorName,
-}: AddCourseParams) {
+export async function addCourseToPurchaserCourses(courses: AddCourseParams[]) {
   const { data: user, error: userError } = await supabase.auth.getUser();
 
   if (userError) {
@@ -40,27 +35,25 @@ export async function addCourseToPurchaserCourses({
   const purchasedCourses: PurchasedCourse[] =
     userMetadata?.user.user_metadata?.purchased_courses || [];
 
-  const courseIndex = purchasedCourses.findIndex(
-    (course: PurchasedCourse) => course.id === courseId
-  );
+  const newCourses: PurchasedCourse[] = courses.map((course) => ({
+    id: course.courseId,
+    name: course.courseName,
+    image: course.courseImage,
+    instructor: course.instructorName,
+    purchased_at: new Date().toISOString(),
+  }));
 
-  if (courseIndex === -1) {
-    purchasedCourses.push({
-      id: courseId,
-      name: courseName,
-      image: courseImage,
-      instructor: instructorName,
-      purchased_at: new Date().toISOString(),
-    });
-  } else {
-    purchasedCourses[courseIndex] = {
-      id: courseId,
-      name: courseName,
-      image: courseImage,
-      instructor: instructorName,
-      purchased_at: purchasedCourses[courseIndex].purchased_at,
-    };
-  }
+  newCourses.forEach((newCourse) => {
+    const courseIndex = purchasedCourses.findIndex(
+      (course) => course.id === newCourse.id
+    );
+
+    if (courseIndex === -1) {
+      purchasedCourses.push(newCourse);
+    } else {
+      purchasedCourses[courseIndex] = newCourse;
+    }
+  });
 
   const { error: updateError } = await supabase.auth.updateUser({
     data: { purchased_courses: purchasedCourses },

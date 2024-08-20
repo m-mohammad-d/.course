@@ -16,26 +16,21 @@ function ShoppingCartPage() {
     cartItems.reduce((total, item) => total + item.price, 0);
 
   const handleCheckout = () => {
-    cartItems.forEach((item) => {
-      checkout(
-        {
-          courseId: item.id,
-          courseImage: item.img,
-          courseName: item.name,
-          instructorName: item.instructor,
-        },
-        {
-          onSuccess: () => {
-            toast.success("Checkout successful!");
-            dispatch(clearCart());
-          },
-          onError: (error: Error) => {
-            console.log(error);
-            
-            toast.error(`Checkout failed: ${error.message}`);
-          },
-        }
-      );
+    const courses = cartItems.map((item) => ({
+      courseId: item.id,
+      courseName: item.name,
+      courseImage: item.img,
+      instructorName: item.instructor,
+    }));
+
+    checkout(courses, {
+      onSuccess: () => {
+        toast.success("Checkout successful!");
+        dispatch(clearCart());
+      },
+      onError: (error: Error) => {
+        toast.error(`Checkout failed: ${error.message}`);
+      },
     });
   };
 
