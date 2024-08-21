@@ -86,5 +86,7 @@ export async function getInstructorByUserid(id: string) {
     throw new Error(error.message);
   }
 
+
+
   return data;
 }

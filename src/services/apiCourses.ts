@@ -72,6 +72,9 @@ interface CourseParams {
 }
 
 export async function addCourse(course: CourseParams) {
+console.log(course);
+
+
   const {
     name,
     title,

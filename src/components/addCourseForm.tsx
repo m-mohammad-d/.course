@@ -13,13 +13,11 @@ function AddCourseForm() {
   const userId = getItemLocal<AuthToken>("sb-llgyyyodgevtfoidrwjf-auth-token")
     ?.user.id;
 
-
   const {
     data: instructor,
     isLoading: isInstructorLoading,
     error: isInstructorError,
   } = useGetInstructorByUserid(userId);
-
 
   const [formData, setFormData] = useState({
     name: "",
@@ -30,10 +28,8 @@ function AddCourseForm() {
     coursetime: "",
     requirements: "",
     lectures: "",
-    instructorId: instructor?.id,
   });
-
-  
+  const instructorId = instructor?.id;
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -53,7 +49,6 @@ function AddCourseForm() {
       coursetime,
       requirements,
       lectures,
-      instructorId,
     } = formData;
 
     mutate(
