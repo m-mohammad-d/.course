@@ -11,7 +11,7 @@ function ManageCoursesPage() {
         <h1 className="text-3xl font-extrabold text-center">Manage courses</h1>
       </header>{" "}
       <main>
-        <div className=" grid grid-cols-3 gap-2 gap-y-8">
+        <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 gap-y-8">
           {data ? (
             data.map((course) => (
               <CourseCardManagement key={course.id} course={course} />
