@@ -1,16 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
 import { getCourse } from "../services/apiCourses";
 
-function useGetCourses() {
-  const { data, error, isPending } = useQuery({
-    queryFn: getCourse,
-    queryKey: ["getCoursesWithInstructors"],
+function useGetCourses(query: string) {
+  const { data, error, isLoading } = useQuery({
+    queryFn: () => getCourse(query),
+    queryKey: ["getCourses", query],
   });
 
   return {
     data: data || [],
     error: error?.message || null,
-    isLoading: isPending,
+    isLoading,
   };
 }
 

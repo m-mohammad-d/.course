@@ -1,16 +1,39 @@
 import supabase from "./supabase";
+export async function getCourse(query: string) {
+  if (!query) {
+    const { data, error } = await supabase
+      .from("courses")
+      .select(`
+        *,
+        instructors (
+          name
+        )
+      `);
 
-export async function getCourse() {
-  const { data: courses, error } = await supabase.from("courses").select(`
-    *,
-    instructors (
-      name
-    )
-  `);
+    if (error) {
+      console.error("Error fetching all courses:", error);
+      return [];
+    }
 
-  if (error) throw new Error(error.message);
+    return data;
+  }
 
-  return courses;
+  const { data, error } = await supabase
+    .from("courses")
+    .select(`
+      *,
+      instructors (
+        name
+      )
+    `)
+    .ilike("title", `%${query}%`)
+
+  if (error) {
+    console.error("Error fetching courses:", error);
+    return [];
+  }
+
+  return data;
 }
 
 export async function getCourseById(courseId: string | undefined) {
@@ -38,7 +61,6 @@ export async function getCourseById(courseId: string | undefined) {
     .single();
 
   if (error) {
-
     throw new Error(error.message);
   }
 

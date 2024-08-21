@@ -1,6 +1,22 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 function SearchBar() {
+  const [query, setQuery] = useState("");
+  const navigate = useNavigate();
+
+  const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (query.trim()) {
+      navigate(`/courses?search=${encodeURIComponent(query.trim())}`);
+    }
+  };
+
   return (
-    <div className="flex items-center bg-gray-200 rounded-full p-2 sm:p-3 w-full max-w-xs sm:max-w-md lg:max-w-lg mx-3">
+    <form
+      className="flex items-center bg-gray-200 rounded-full p-2 sm:p-3 w-full max-w-xs sm:max-w-md lg:max-w-lg mx-3"
+      onSubmit={handleSearch}
+    >
       <svg
         className="w-5 h-5 text-gray-600 sm:w-6 sm:h-6"
         fill="none"
@@ -19,8 +35,17 @@ function SearchBar() {
         className="bg-gray-200 ml-2 outline-none w-full"
         type="text"
         placeholder="Search for anything"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
       />
-    </div>
+      <button
+        type="submit"
+        className="ml-2 bg-orangePeel text-white px-4 py-2 rounded-full"
+      >
+        Search
+      </button>
+    </form>
   );
 }
+
 export default SearchBar;

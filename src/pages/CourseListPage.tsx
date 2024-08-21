@@ -1,19 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import CourseCard from "../components/CourseCard";
 import Spinner from "../components/Spinner";
 import useGetCourses from "../hooks/useGetCourses";
 
 function CourseListPage() {
-  const { data: courses, isLoading } = useGetCourses();
-  console.log(courses);
-
+  const location = useLocation();
   const [sortOption, setSortOption] = useState<string>("default");
+  const [searchQuery, setSearchQuery] = useState<string>("");
+
+
+  useEffect(() => {
+    const query = new URLSearchParams(location.search).get('search');
+    setSearchQuery(query || "");
+  }, [location.search]);
+
+  const { data: courses, isLoading } = useGetCourses(searchQuery);
 
   if (isLoading) return <Spinner />;
 
-  const confirmedCourses = courses.filter((course) => course.isConfirmed);
+  const filteredCourses = courses.filter((course) => course.isConfirmed);
 
-  const sortedCourses = confirmedCourses.sort((a, b) => {
+  const sortedCourses = filteredCourses.sort((a, b) => {
     switch (sortOption) {
       case "name":
         return a.name.localeCompare(b.name);
