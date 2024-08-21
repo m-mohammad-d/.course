@@ -72,8 +72,7 @@ interface CourseParams {
 }
 
 export async function addCourse(course: CourseParams) {
-console.log(course);
-
+  console.log(course);
 
   const {
     name,
@@ -159,4 +158,24 @@ export async function rejectCourse(courseId: string) {
   }
 
   return data;
+}
+interface AddCommentVariables {
+  id: string;
+  updatedComments: {
+    name: string;
+    "comment-title": string;
+    rating: number;
+  }[];
+}
+
+export async function addComment({ id, updatedComments }: AddCommentVariables) {
+  const { error } = await supabase
+    .from("courses")
+    .update({ comments: updatedComments })
+    .eq("id", id);
+
+  if (error) {
+    console.error("Error adding comment:", error.message);
+    throw new Error(`Failed to add comment: ${error.message}`);
+  }
 }

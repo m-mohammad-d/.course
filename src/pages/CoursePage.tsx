@@ -1,3 +1,4 @@
+import AddCommentModal from "../components/AddCommentModal";
 import CourseComments from "../components/CourseComments";
 import CourseContent from "../components/CourseContent";
 import CourseFeatures from "../components/CourseFeatures";
@@ -45,6 +46,7 @@ function CoursePage() {
           courseRating={courseData?.rating}
           comments={courseData?.comments}
         />
+        <AddCommentModal comments={courseData.comments || []} id={courseData.id}  />
       </div>
     </div>
   );
