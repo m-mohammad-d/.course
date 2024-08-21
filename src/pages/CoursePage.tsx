@@ -28,7 +28,7 @@ function CoursePage() {
         courseRating={courseData?.rating}
         ratingCount={courseData?.comments?.length}
         instructor={courseData?.instructors.name}
-        countstudent={courseData?.student_count}
+        countstudent={courseData?.countstudent}
         price={courseData?.price}
         img={courseData?.image}
       />
