@@ -42,11 +42,18 @@ function CoursePage() {
         />
         <CourseRequirements requirements={courseData?.Requirements} />
         <CourseInstructor instructor={courseData?.instructors} />
-        <CourseComments
-          courseRating={courseData?.rating}
-          comments={courseData?.comments}
+        {courseData.comments?.length > 0 ? (
+          <CourseComments
+            courseRating={courseData?.rating}
+            comments={courseData.comments}
+          />
+        ) : (
+          <p className="text-2xl mt-8">This course has no comments</p>
+        )}
+        <AddCommentModal
+          comments={courseData.comments || []}
+          id={courseData.id}
         />
-        <AddCommentModal comments={courseData.comments || []} id={courseData.id}  />
       </div>
     </div>
   );
