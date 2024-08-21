@@ -38,7 +38,7 @@ export async function getCourseById(courseId: string | undefined) {
     .single();
 
   if (error) {
-    console.error("Error fetching course:", error.message);
+
     throw new Error(error.message);
   }
 
