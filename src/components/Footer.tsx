@@ -1,5 +1,5 @@
 import { IoEarthOutline } from "react-icons/io5";
-import logo from "../asset/image/udemyLogo.png";
+import logo from "../asset/image/logo.svg";
 
 function Footer() {
   return (

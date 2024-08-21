@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../asset/image/udemyLogo.png";
+import logo from "../asset/image/logo.svg";
 import SearchBar from "./SearchBar";
 import AuthLink from "./AuthLink";
 import { RiShoppingCart2Line } from "react-icons/ri";
