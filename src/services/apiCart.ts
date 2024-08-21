@@ -16,6 +16,7 @@ interface PurchasedCourse {
 }
 
 export async function addCourseToPurchaserCourses(courses: AddCourseParams[]) {
+
   const { data: user, error: userError } = await supabase.auth.getUser();
 
   if (userError) {
@@ -26,14 +27,12 @@ export async function addCourseToPurchaserCourses(courses: AddCourseParams[]) {
     throw new Error("No user is currently logged in.");
   }
 
-  const { data: userMetadata, error: metadataError } =
-    await supabase.auth.getUser();
-  if (metadataError) {
-    throw new Error(`Failed to fetch user metadata: ${metadataError.message}`);
-  }
+  const userMetadata = user.user_metadata;
+
 
   const purchasedCourses: PurchasedCourse[] =
-    userMetadata?.user.user_metadata?.purchased_courses || [];
+    userMetadata?.purchased_courses || [];
+
 
   const newCourses: PurchasedCourse[] = courses.map((course) => ({
     id: course.courseId,
@@ -43,25 +42,53 @@ export async function addCourseToPurchaserCourses(courses: AddCourseParams[]) {
     purchased_at: new Date().toISOString(),
   }));
 
-  newCourses.forEach((newCourse) => {
-    const courseIndex = purchasedCourses.findIndex(
-      (course) => course.id === newCourse.id
-    );
 
-    if (courseIndex === -1) {
-      purchasedCourses.push(newCourse);
-    } else {
-      purchasedCourses[courseIndex] = newCourse;
-    }
-  });
+  const updatedCourses = new Map(
+    [...purchasedCourses, ...newCourses].map((course) => [course.id, course])
+  );
+
+
+  const updatedCoursesArray = Array.from(updatedCourses.values());
+
 
   const { error: updateError } = await supabase.auth.updateUser({
-    data: { purchased_courses: purchasedCourses },
+    data: { purchased_courses: updatedCoursesArray },
   });
 
   if (updateError) {
     throw new Error(`Failed to update user metadata: ${updateError.message}`);
   }
 
+
+  for (const course of courses) {
+    await updateCourseStudentCount(course.courseId);
+  }
+
   return true;
+}
+
+async function updateCourseStudentCount(courseId: string) {
+
+  const { data: course, error } = await supabase
+    .from("courses")
+    .select("countstudent")
+    .eq("id", courseId)
+    .single();
+
+  if (error) {
+    throw new Error(`Failed to fetch course: ${error.message}`);
+  }
+
+  const newCount = (course?.countstudent || 0) + 1;
+
+  const { error: updateError } = await supabase
+    .from("courses")
+    .update({ countstudent: newCount })
+    .eq("id", courseId);
+
+  if (updateError) {
+    throw new Error(
+      `Failed to update course student count: ${updateError.message}`
+    );
+  }
 }
