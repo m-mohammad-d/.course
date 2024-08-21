@@ -16,8 +16,16 @@ function CoursePage() {
     isLoading: isCourseLoading,
   } = useGetCourse();
 
+
   if (isCourseLoading) return <Spinner />;
-  if (courseError) return <p>{courseError?.message}</p>;
+
+  if (courseError || !courseData) {
+    return (
+      <div className="container mx-auto px-4 my-6 text-center">
+        <p className="text-2xl text-textGray">This course does not exist.</p>
+      </div>
+    );
+  }
 
   return (
     <div>
