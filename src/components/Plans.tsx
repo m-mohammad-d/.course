@@ -53,7 +53,7 @@ const plans = [
 ];
 function Plans() {
   return (
-    <div className="my-16">
+    <div className="my-16 mx-6">
       <div className="w-full md:w-5/6 mx-auto">
         <h2 className="text-2xl md:text-3xl font-bold text-darkGray mb-8">
           Accelerate growth — for you or your organization
