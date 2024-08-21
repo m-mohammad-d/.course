@@ -70,9 +70,11 @@ function CourseInstructor({
       </div>
       <div className="mt-6 text-sm text-textGray">
         <p className="line-clamp-6 lg:line-clamp-none">{instructor.bio}</p>
-        <button className="mt-4 px-4 py-2 bg-deepBlue text-white rounded-md  transition-all duration-300">
-          View Profile
-        </button>
+        <Link to={`/user/${instructor.id}`}> 
+          <button className="mt-4 px-4 py-2 bg-deepBlue text-white rounded-md  transition-all duration-300">
+            View Profile
+          </button>
+        </Link>
       </div>
     </div>
   );
