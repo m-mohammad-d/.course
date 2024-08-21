@@ -95,14 +95,20 @@ function Header() {
               <RiShoppingCart2Line className="text-mediumGray" size={28} />
             </Link>
           </li>
-          {userRole ? (
-            <AuthLink text="Dashboard" href={dashboardLink} type="dashboard" />
-          ) : (
-            <>
-              <AuthLink text="Login" type="login" href="/login" />
-              <AuthLink text="Sign Up" type="signup" href="/signup" />
-            </>
-          )}
+          <li className="flex flex-col space-y-2">
+            {userRole ? (
+              <AuthLink
+                text="Dashboard"
+                href={dashboardLink}
+                type="dashboard"
+              />
+            ) : (
+              <>
+                <AuthLink text="Login" type="login" href="/login" />
+                <AuthLink text="Sign Up" type="signup" href="/signup" />
+              </>
+            )}
+          </li>
         </ul>
       )}
     </header>

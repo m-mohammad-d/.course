@@ -29,7 +29,7 @@ function AuthLink({ text, href, type }: AuthLinkProps) {
   return (
     <Link
       to={href}
-      className={`${backgroundColor} ${textColor} ${borderColor} px-4 py-3 border rounded-md transition duration-300 ease-in-out hover:bg-darkOrange hover:text-softWhite`}
+      className={`${backgroundColor} ${textColor} ${borderColor} w-min px-4 py-3 border rounded-md transition duration-300 ease-in-out hover:bg-darkOrange hover:text-softWhite`}
     >
       {text}
     </Link>
