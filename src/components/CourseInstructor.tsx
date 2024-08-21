@@ -28,7 +28,7 @@ function CourseInstructor({
       <h2 className="text-2xl font-bold mb-6 text-darkGray">Instructor</h2>
       <div className="flex flex-col lg:flex-row items-start lg:items-center">
         <div className="flex items-center gap-4 mb-4 lg:mb-0">
-          <Link to={`/user/${instructor.id}`} className="shrink-0">
+          <Link to={`/Instructor/${instructor.id}`} className="shrink-0">
             <img
               src={instructor.image_url}
               alt={instructor.name}
@@ -70,7 +70,7 @@ function CourseInstructor({
       </div>
       <div className="mt-6 text-sm text-textGray">
         <p className="line-clamp-6 lg:line-clamp-none">{instructor.bio}</p>
-        <Link to={`/user/${instructor.id}`}> 
+        <Link to={`/Instructor/${instructor.id}`}> 
           <button className="mt-4 px-4 py-2 bg-deepBlue text-white rounded-md  transition-all duration-300">
             View Profile
           </button>
