@@ -2,7 +2,23 @@ import CourseCards from "../components/CourseCards";
 import Spinner from "../components/Spinner";
 import useGetUserProfile from "../hooks/useGetUserProfile";
 import { Link } from "react-router-dom";
+interface Course {
+  id: number;
+  image: string;
+  title?: string;
+  name: string;
+  instructors?: {
+    name: string;
+  };
+  instructor?: string;
+  rating?: number;
+  reviews?: number;
+  price?: string;
+  oldPrice?: string;
+  bestseller?: boolean;
+  purchased_at?: string;
 
+}
 function MyCourse() {
   const { data, isLoading } = useGetUserProfile();
 
@@ -19,7 +35,7 @@ function MyCourse() {
 
         {purchasedCourses.length > 0 ? (
           <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {purchasedCourses.map((course) => (
+            {purchasedCourses.map((course :Course) => (
               <CourseCards key={course.id} course={course} />
             ))}
           </div>

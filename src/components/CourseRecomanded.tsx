@@ -5,7 +5,7 @@ import useGetCourses from "../hooks/useGetCourses";
 import Spinner from "./Spinner";
 
 const CourseRecommendations = () => {
-  const { data, isLoading } = useGetCourses();
+  const { data, isLoading } = useGetCourses("");
   const recommendedCourses = data?.slice(1, 6); 
 
   if (isLoading) return <Spinner />;

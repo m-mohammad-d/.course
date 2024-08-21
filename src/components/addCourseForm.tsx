@@ -75,7 +75,6 @@ function AddCourseForm() {
             coursetime: "",
             requirements: "",
             lectures: "",
-            instructorId: instructor?.id,
           });
         },
         onError: (error: Error) => {

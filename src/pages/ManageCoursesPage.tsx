@@ -3,7 +3,7 @@ import Spinner from "../components/Spinner";
 import useGetCourses from "../hooks/useGetCourses";
 
 function ManageCoursesPage() {
-  const { data, isLoading } = useGetCourses();
+  const { data, isLoading } = useGetCourses("");
   if (isLoading) return <Spinner />;
   return (
     <div className="min-h-screen bg-backgroundGray p-8">

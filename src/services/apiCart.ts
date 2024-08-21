@@ -27,7 +27,7 @@ export async function addCourseToPurchaserCourses(courses: AddCourseParams[]) {
     throw new Error("No user is currently logged in.");
   }
 
-  const userMetadata = user.user_metadata;
+  const userMetadata = user.user.user_metadata;
 
 
   const purchasedCourses: PurchasedCourse[] =
