@@ -68,19 +68,23 @@ function Header() {
           </>
         )}
       </div>
-      {isMenuOpen && (
-        <ul className="fixed top-0 left-0 h-full w-64 bg-softWhite p-4 space-y-4 shadow-lg md:hidden z-50">
-          <li className="flex justify-end">
-            <button
-              onClick={toggleMenu}
-              className="text-mediumGray hover:text-orangePeel"
-            >
-              <HiX size={28} />
-            </button>
-          </li>
-          <li>
-            <SearchBar />
-          </li>
+
+      {/* Sidenav*/}
+      <div
+        className={`fixed top-0 left-0 h-full w-64 bg-softWhite p-4 space-y-4 shadow-lg md:hidden z-50 transform transition-transform duration-300 ease-in-out ${
+          isMenuOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        <div className="flex justify-end">
+          <button
+            onClick={toggleMenu}
+            className="text-mediumGray hover:text-orangePeel"
+          >
+            <HiX size={28} />
+          </button>
+        </div>
+        <SearchBar />
+        <ul className="space-y-4">
           <li className="hover:text-orangePeel text-mediumGray transition-all duration-300 ease-in">
             <Link to="/pricing">Plans & Pricing</Link>
           </li>
@@ -110,7 +114,7 @@ function Header() {
             )}
           </li>
         </ul>
-      )}
+      </div>
     </header>
   );
 }
