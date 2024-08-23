@@ -9,9 +9,8 @@ function CourseListPage() {
   const [sortOption, setSortOption] = useState<string>("default");
   const [searchQuery, setSearchQuery] = useState<string>("");
 
-
   useEffect(() => {
-    const query = new URLSearchParams(location.search).get('search');
+    const query = new URLSearchParams(location.search).get("search");
     setSearchQuery(query || "");
   }, [location.search]);
 
@@ -58,11 +57,17 @@ function CourseListPage() {
         <p className="text-darkGray">{sortedCourses.length} results</p>
       </div>
 
-      <div className="grid grid-cols-1 gap-6">
-        {sortedCourses.map((course) => (
-          <CourseCard key={course.id} {...course} />
-        ))}
-      </div>
+      {sortedCourses.length === 0 ? (
+        <p className="text-red-500 font-semibold text-center">
+          Course not found
+        </p>
+      ) : (
+        <div className="grid grid-cols-1 gap-6">
+          {sortedCourses.map((course) => (
+            <CourseCard key={course.id} {...course} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
