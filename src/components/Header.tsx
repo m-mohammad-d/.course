@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import logo from "../asset/image/logo.svg";
 import SearchBar from "./SearchBar";
@@ -9,6 +9,7 @@ import { getUserRole } from "../utils/getUserRole";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const sidebarRef = useRef<HTMLDivElement>(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -21,6 +22,19 @@ function Header() {
       : userRole === "admin"
       ? "/admin/manage-users"
       : "/user/edit-profile";
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (sidebarRef.current && !sidebarRef.current.contains(event.target as Node)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <header className="flex items-center justify-between p-4 md:p-6 bg-softWhite shadow-md relative">
@@ -69,8 +83,9 @@ function Header() {
         )}
       </div>
 
-      {/* Sidenav*/}
+      {/* Sidenav */}
       <div
+        ref={sidebarRef}
         className={`fixed top-0 left-0 h-full w-64 bg-softWhite p-4 space-y-4 shadow-lg md:hidden z-50 transform transition-transform duration-300 ease-in-out ${
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
