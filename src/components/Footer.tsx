@@ -6,7 +6,7 @@ function Footer() {
     <footer className="bg-darkGray text-softWhite py-8 mt-auto">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between mb-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs md:text-sm mb-8 md:mb-0">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs md:text-sm mb-8 md:mb-0">
             <div>
               <ul className="space-y-3">
                 <li className="transition-all delay-300 ease-linear hover:text-primary hover:underline">
