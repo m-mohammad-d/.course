@@ -45,7 +45,7 @@ function Header() {
       </div>
 
       <div className="hidden md:flex flex-1 mx-2 md:mx-4 lg:mx-8">
-        <SearchBar />
+        <SearchBar onSetMenuOpen={setIsMenuOpen} />
       </div>
 
       <div className="md:hidden ml-auto">
@@ -98,7 +98,7 @@ function Header() {
             <HiX size={28} />
           </button>
         </div>
-        <SearchBar />
+        <SearchBar onSetMenuOpen={setIsMenuOpen} />
         <ul className="space-y-4">
           <li className="hover:text-orangePeel text-mediumGray transition-all duration-300 ease-in">
             <Link to="/pricing">Plans & Pricing</Link>

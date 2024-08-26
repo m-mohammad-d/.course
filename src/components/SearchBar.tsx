@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function SearchBar() {
+function SearchBar({ onSetMenuOpen }: { onSetMenuOpen: (isOpen: boolean) => void }) {
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
 
@@ -9,6 +9,7 @@ function SearchBar() {
     event.preventDefault();
     if (query.trim()) {
       navigate(`/courses?search=${encodeURIComponent(query.trim())}`);
+      onSetMenuOpen(false);
     }
   };
 
