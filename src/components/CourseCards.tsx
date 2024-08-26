@@ -36,11 +36,11 @@ function CourseCards({ course }: CourseCardProps) {
       <div className="p-4 flex-grow">
         <Link
           to={`/course/${course.id}`}
-          className="text-md font-semibold mb-2 text-darkGray hover:text-darkOrange transition duration-300"
+          className="text-md font-semibold mb-2 text-darkGray hover:text-darkOrange transition duration-300 line-clamp-3"
         >
           {course.title || course.name}
         </Link>
-        <p className="text-mediumGray text-sm mb-1">
+        <p className="text-mediumGray text-sm mb-1 line-clamp-1">
           {course.instructors?.name || course.instructor}
         </p>
         {course.rating && (
