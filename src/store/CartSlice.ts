@@ -6,15 +6,19 @@ interface Course {
   name: string;
   price: number;
   img: string;
-  instructor : string
+  instructor: string;
+}
+
+export interface CartItem extends Course {
+  quantity: number;
 }
 
 export interface CartState {
-  items: Course[];
+  items: CartItem[];
 }
 
 const initialState: CartState = {
-  items: getItemLocal<Course[]>("cart") || [],
+  items: getItemLocal("cart") || [],
 };
 
 const cartSlice = createSlice({
@@ -22,11 +26,18 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addItem: (state, action: PayloadAction<Course>) => {
-      console.log(initialState);
+      const newItem = action.payload;
+      const existingItem = state.items.find((item) => item.id === newItem.id);
 
-      state.items.push(action.payload);
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        state.items.push({ ...newItem, quantity: 1 });
+      }
+
       setItemLocal("cart", state.items);
     },
+
     removeItem: (state, action: PayloadAction<string>) => {
       state.items = state.items.filter((item) => item.id !== action.payload);
       setItemLocal("cart", state.items);

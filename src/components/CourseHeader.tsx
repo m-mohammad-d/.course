@@ -1,7 +1,8 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { IoStarSharp } from "react-icons/io5";
 import { PiStudentFill } from "react-icons/pi";
-import { addItem } from "../store/CartSlice";
+import { RootState } from "../store";
+import { addItem, removeItem } from "../store/CartSlice";
 import toast from "react-hot-toast";
 
 interface CourseHeaderProps {
@@ -28,18 +29,18 @@ function CourseHeader({
   id,
 }: CourseHeaderProps) {
   const dispatch = useDispatch();
-  console.log(id);
+  const cartItems = useSelector((state: RootState) => state.cart.items);
+  const isCourseInCart = cartItems.some((item) => item.id === id);
 
   const handleAddToCart = () => {
-    const course = {
-      id,
-      name: courseName,
-      price,
-      img,
-      instructor,
-    };
+    const course = { id, name: courseName, price, img, instructor };
     dispatch(addItem(course));
-    toast.success("Course added successfully");
+    toast.success("Course added to cart successfully");
+  };
+
+  const handleRemoveFromCart = () => {
+    dispatch(removeItem(id));
+    toast.success("Course removed from cart");
   };
 
   return (
@@ -79,12 +80,22 @@ function CourseHeader({
             <p className="text-2xl font-bold">${price}</p>
             <p className="text-sm text-gray-600">30-Day Money-Back Guarantee</p>
           </div>
-          <button
-            onClick={handleAddToCart}
-            className="w-full bg-orangePeel text-white py-2 rounded-md hover:bg-darkOrange transition duration-300"
-          >
-            Add to Cart
-          </button>
+
+          {isCourseInCart ? (
+            <button
+              onClick={handleRemoveFromCart}
+              className="w-full bg-red-500 text-white py-2 rounded-md hover:bg-red-600 transition duration-300"
+            >
+              Remove from Cart
+            </button>
+          ) : (
+            <button
+              onClick={handleAddToCart}
+              className="w-full bg-orangePeel text-white py-2 rounded-md hover:bg-darkOrange transition duration-300"
+            >
+              Add to Cart
+            </button>
+          )}
         </div>
       </div>
     </div>
