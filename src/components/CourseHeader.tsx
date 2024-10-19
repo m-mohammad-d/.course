@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import { IoStarSharp } from "react-icons/io5";
 import { PiStudentFill } from "react-icons/pi";
 import { addItem } from "../store/CartSlice";
+import toast from "react-hot-toast";
 
 interface CourseHeaderProps {
   courseName: string;
@@ -38,6 +39,7 @@ function CourseHeader({
       instructor,
     };
     dispatch(addItem(course));
+    toast.success("Course added successfully");
   };
 
   return (
